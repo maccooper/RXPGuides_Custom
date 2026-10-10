@@ -8,4 +8,5 @@
 
 ## Dependencies: RXPGuides
 
+Forever Duo 1-10.lua
 Forever Duo 10-20.lua
