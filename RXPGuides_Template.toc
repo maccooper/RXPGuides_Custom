@@ -1,0 +1,11 @@
+## Interface: 11509, 38002, 50504, 120100, 120005, 120007, 16001
+
+
+## Title: RXPGuides - Mac's custom Guide
+## Notes: Nelf wow forever guide
+## Author: Tea
+## Version: 1.0
+
+## Dependencies: RXPGuides
+
+Forever Duo 10-20.lua
