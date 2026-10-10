@@ -9,25 +9,34 @@ RXPGuides.RegisterGuide([[
 #subgroup 10-20
 #next 15-16 Westfall/Redridge
 
--- step Love Eternal
--- step Buzzbox
+step
+    .goto Darkshore, 36.8, 44.3
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Laird|r
+    .turnin 6342 >> Turn in Flight to Auberdine
+    .accept 6343 >> Accept Return to Nessa
+    .target Laird
+
+step
+    .goto Darkshore, 35.8, 43.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Cerellean Whiteclaw|r
+    .accept 963 >> Accept For Love Eternal
+    .target Cerellean Whiteclaw
+step
+    .goto Darkshore, 37.0, 44.0
+
+    .accept 983 >> Accept Buzzbox 827
+    .target Wizbang Cranktoggle
+
+step 
+    .goto Darkshore, 37.3, 44.2
+    >>Click the |cFF00FF25Wanted Poster 827|r
+    .accept 98025 >> Accept WANTED: Jai'vhanel
+
 step
     .goto Darkshore, 36.71, 44.28
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gwennyth Bly'Leggonde|r
     .accept 3524 >> Accept Washed Ashore
     .target Gwennyth Bly'Leggonde
-
-step
-    .goto Darkshore, 37.20,43.60
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Barithras Moonshade|r
-    .target Barithras Moonshade
-    .accept 947 >> Accept Cave Mushrooms
-
-step
-    .goto Darkshore, 37.60,43.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Glynda Nal'Shea|r
-    .target Sentinel Glynda Nal'Shea
-    .accept 4811 >> Accept The Red Crystal
 
 step
     .goto Darkshore,38.80,43.40
@@ -118,7 +127,7 @@ step
     .goto Felwood, 19.98, 14.40
     .turnin 4761 >> Turn in Thundris Windweaver
     .accept 4762 >> Accept The Cliffspring River
-    .accept 959 >> Accept Tools of the Highborne
+    .accept 958 >> Accept Tools of the Highborne
     .accept 954 >> Accept Bashal'Aran
 
 
@@ -172,11 +181,6 @@ step
     .target Asterion
 
 step
-    #map Darkshore
-    .goto Felwood,31.29,24.14
-    >> Travel to |cFFDB2EEFThe Red Crystal|r
-    .complete 4811,1
-step
     #label Ameth
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Tysha Moonblade|r
     .target Sentinel Tysha Moonblade
@@ -203,14 +207,19 @@ step
     .complete 953,2 -- The Fall of Ameth'Aran
 step
     #map Darkshore
-    .goto Felwood,25.68,30.32
+    .goto Darkshore, 42.5, 61.8
     >>Click the |cFFDB2EEFAncient Flame|r
     .complete 957,1
 step
     #label TheLay
-    .goto Darkshore,42.30,58.70
+    .goto Darkshore,43.3,58.5
     >>Click the |cFFDB2EEFThe Lay of Ameth'Aran|r
     .complete 953,1 -- The Lay of Ameth'Aran
+
+step
+    #label Jai'vhanel
+    .goto Darkshore 45.3,58.1
+    >>Kill |cFFFF5722Jai'vhanel|r. Loot her for her |cFF00BCD4Feather of Jai'vhanel|r
 
 step
     #completewith next
@@ -220,7 +229,7 @@ step
     .unitscan Anaya Dawnrunner
 step
     #map Darkshore
-    .goto Felwood,23.29,36.73
+    .goto Darkshore, 40.3,59.8
     .target Sentinel Tysha Moonblade
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Tysha Moonblade|r
     .turnin 953 >> Turn in The Fall of Ameth'Aran
@@ -231,6 +240,7 @@ step
     .mob Rabid Thistle Bear
 
 step
+    -- Murlocs here are fucked I might need better gear and/or food stam buff?
     >>Loot the Sea Creature
     .goto Darkshore,36.02,70.79
     .accept 4728 >> Accept Beached Sea Creature
@@ -1289,5 +1299,40 @@ step
 ]])
 
 
+RXPGuides.RegisterGuide([[
 
+#name 17-20 Darkshore
+#group Mac Custom
+#subgroup 10-20
+#next TBD
+
+step 
+    .goto Darkshore, 37.3, 44.2
+    >>Click the |cFF00FF25Wanted Poster 827|r
+    .accept 4740 >> Accept WANTED: Murkdeep!
+
+step
+    .goto Darkshore, 37.4, 43.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barithras Moonshade|r
+    .accept 947 >> Accept Cave Mushrooms
+    .target Barithras Moonshade
+
+step
+    .goto Darkshore, 37.60,43.40
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Glynda Nal'Shea|r
+    .target Sentinel Glynda Nal'Shea
+    .accept 4811 >> Accept The Red Crystal
+step
+    .goto Darkshore, 39.0, 43.5
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Elissa Starbreeze|r
+    .target Elissa Starbreeze
+    .accept 965 >> Accept The Tower of Althalaxx
+
+step
+    #map Darkshore
+    .goto Felwood,31.29,24.14
+    >> Travel to |cFFDB2EEFThe Red Crystal|r
+    .complete 4811,1
+
+]])
 

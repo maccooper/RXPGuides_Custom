@@ -1218,8 +1218,6 @@ step << NightElf !Druid
     .goto 1438/1,842.800,8641.300
     .fly Auberdine >>Fly to Auberdine
 
-
-
 ]])
 
 
