@@ -51,7 +51,6 @@ step << Rogue
     .train 8613 >>Train Skinning
     .collect 7005,1 >>Buy a Skinning Knife
     .collect 277114 >> Buy a Skinning Satchel
-
     .target Frahun Shadewhisper
     .train 1784 >>Train Stealth
 
@@ -261,9 +260,6 @@ step
     .turnin 920 >> Turn in Tenaron's Summons
     .target Tenaron Stormgrip
     .accept 921 >> Accept Crown of the Earth
-
--- draft
-
 
 step
     #sticky
@@ -1009,6 +1005,12 @@ step << Rogue
     .turnin 2205 >>Turn in Seek out SI: 7
     .accept 2206 >> Snatch and Grab
     .target Master Mathias Shaw
+
+step
+    .goto StormwindClassic,57.6,47.8    
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r in SI:7
+    .accept 399 >> Accept Humble Beginnings
+    .target Baros Alexston
 
 step
     .hs >>Hearth to Dolanaar

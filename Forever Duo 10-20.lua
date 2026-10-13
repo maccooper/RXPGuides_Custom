@@ -467,6 +467,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Innkeeper Shaussiy|r
     .target Innkeeper Shaussiy
     .home >> Set hearth to Auberdine
+    -- I don't think so
 
 ]])
 
@@ -664,34 +665,36 @@ step
     .target Gryan Stoutmantle
     .goto Westfall,56.33,47.52
 step
-    #completewith next
-    >>Kill |cRXP_ENEMY_Harvest Watchers|r en route
-    >>Try to get to 15/20, if mobs available from here
-    .complete 9,1 --Harvest Watcher (20)
-    .mob Harvest Watcher
-step
-    .goto Westfall,56.2,34.5
-    >>Open |cRXP_PICK_Alexston's Chest|r. Loot it for |cRXP_LOOT_A Simple Compass|r
-    >>|cRXP_WARN_This has a 5 second cast time|r
-    .complete 399,1 --A Simple Compass (1)
-    .isOnQuest 399
-step
     #completewith Compass
     >>Loot |cRXP_ENEMY_Harvest Watchers|r for |cRXP_LOOT_Flasks of Oil|r
     .collect 814,5,103,1 --Flask of Oil (5)
     .mob Harvest Watcher
+
+
+
 step
-    #completewith next
-    >>Kill |cRXP_ENEMY_Harvest Watchers|r en route. Loot them for their |cRXP_LOOT_Flasks of Oil|r
+    #Sticky
+    >>Open the |cRXP_PICK_Sacks of Oats|r on the ground. Loot them for |cRXP_LOOT_Handfuls of Oats|r
+    .complete 151, 1 -- Handful of Oats (8)
+
+
+step
+    #completewith Compass
+    >>Kill |cRXP_ENEMY_Harvest Watchers|r en route
     >>Try to get to 15/20. If mobs are available, finish here
     .complete 9,1 --Harvest Watcher (20)
     .mob Harvest Watcher
+
+step
+    .goto Westfall, 37.4, 50.6
+    >>Click the |cRXP_PICK_Burned-Out Remains|r
+    .accept 790008 > ... and that note you found
 step
     #label Compass
-    .goto 1436/0,1748.27,-10672.13
+    .goto Westfall,36.2,54.4
     >>Open |cRXP_PICK_Alexston's Chest|r. Loot it for |cRXP_LOOT_A Simple Compass|r
-    >>|cRXP_WARN_This has a 5 second cast time|r
     .complete 399,1 --A Simple Compass (1)
+
 step
     .goto Westfall,46.1,38.1
     >>Use the Well Water Sample Kit at the well
@@ -705,6 +708,7 @@ step
 step
     >>Talk to |cRXP_FRIENDLY_Farmer Saldean|r and then |cRXP_FRIENDLY_Salma|r inside the house
     .turnin 9 >> Turn in The Killing Fields
+    -- Will need to have learned bows by then, in Darn
     .vendor >> Vendor Trash
     .target +Farmer Saldean
     .goto Westfall,56.04,31.23
@@ -794,11 +798,17 @@ step << Warrior
     .train 285
     .train 694
 step
+    .goto Elwynn Forest, 24.2, 74.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Rainer|r
+    .turnin 11,1 >> Turn in Riverpaw Gnoll Bounty
+    .target Deputy Rainer
+step
     .goto Elwynn Forest,41.71,65.55
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Smith Argus|r
     .target Smith Argus
     .turnin 118 >> Turn in The Price of Shoes
     .accept 119 >> Accept Return to Verner
+
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25General Marcus Jonathan|r
     .target General Marcus Jonathan
@@ -810,13 +820,84 @@ step << Skip --Turn in when going to HoT after RR 2
     .goto StormwindClassic,49.193,30.278
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Baros Alexston|r
     .turnin 399 >> Turn in Humble Beginnings
+    .turnin >> Expanding Horizons
+    .accept >> Making Do
     .target Baros Alexston
+
+step << Rogue
+    .goto StormwindClassic,77.3,65.3
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Osborne the Night Man|r
+    .trainer >> Train your class spells
+
+
 step
     .goto StormwindClassic,78.3,70.7
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Master Mathias Shaw|r
     .turnin 135 >> Turn in The Defias Brotherhood
     .accept 141 >> Accept The Defias Brotherhood
     .target Master Mathias Shaw
+
+step
+    .goto Redridge Mountains,30.40,59.20
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Ariena Stormfeather|r
+    .target Ariena Stormfeather
+    .fly Westfall >> Fly to Westfall
+    .zoneskip Westfall
+
+step
+    .goto 1436/0,1041.97,-10511.13
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Captain Danuvin|r
+    .turnin 102,1 >> Turn in Patrolling Westfall
+    .target Captain Danuvin
+
+step
+    .goto Westfall,56.33,47.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryan|r
+    .turnin 141 >> Turn in The Defias Brotherhood
+    .accept 142 >> Accept The Defias Brotherhood
+    .target Gryan Stoutmantle
+
+step
+    .goto Westfall, 56.33, 47.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alba|r
+    .target Alba Fairmoon
+    .turnin 92742 >> Turn in Testing The Wells
+    .isQuestComplete 92742
+
+
+
+--- end of Defias
+
+    
+step
+    #completewith next
+    >>Kill |cFFFF5722Defias Pillagers|r and |cFFFF5722Defias Looters|r
+    .complete 13,1 -- Defias Pillager slain (15)
+    .complete 13,2 -- Defias Looter slain (15)
+    .mob Defias Pillager
+    .mob Defias Looter
+
+step
+    #completwith next
+    .goto Westfall,44.50,69.62
+    .line Westfall,44.50,69.62,44.50,69.62,45.08,69.40,45.21,69.35,45.63,68.69
+    >>Kill the |cFFFF5722Defias Messenger|r. Loot him for his |cFF00BCD4Mysterious Message|r
+    >>|cFFFCDC00The|r |cFFFF5722Defias Messenger|r |cFFFCDC00spawns in Moonbrook|r
+    >>|cFFFCDC00He has a 5 minute respawn timer|r
+    .complete 142,1 -- A Mysterious Message (1)
+    .unitscan Defias Messenger
+
+
+step
+    >>Kill |cFFFF5722Defias Pillagers|r and |cFFFF5722Defias Looters|r
+    .complete 13,1
+    .complete 13,2
+    .xp <20
+    .isOnQuest 13
+
+
+
+-- Redridge Part 2
 
 step
     .goto StormwindClassic,66.277,62.137
@@ -938,7 +1019,7 @@ step
     .goto Redridge Mountains,30.40,59.20
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Ariena Stormfeather|r
     .target Ariena Stormfeather
-    .fly Westfall >> Fly to Sentinel Hill
+    .fly Westfall >> Fly to Westfall
     .zoneskip Westfall
 step
     .goto Westfall,56.33,47.52
@@ -967,27 +1048,6 @@ step
     .target Alba Fairmoon
     .turnin 92742 >> Turn in Testing the Wells
 
-step
-    #completewith next
-    >>Kill |cFFFF5722Defias Pillagers|r and |cFFFF5722Defias Looters|r
-    .complete 13,1 -- Defias Pillager slain (15)
-    .complete 13,2 -- Defias Looter slain (15)
-    .mob Defias Pillager
-    .mob Defias Looter
-
-step
-    .goto Westfall,44.50,69.62
-    .line Westfall,44.50,69.62,44.50,69.62,45.08,69.40,45.21,69.35,45.63,68.69
-    >>Kill the |cFFFF5722Defias Messenger|r. Loot him for his |cFF00BCD4Mysterious Message|r
-    >>|cFFFCDC00The|r |cFFFF5722Defias Messenger|r |cFFFCDC00spawns in Moonbrook|r
-    >>|cFFFCDC00He has a 5 minute respawn timer|r
-    .complete 142,1 -- A Mysterious Message (1)
-    .unitscan Defias Messenger
-
-step
-    >>Kill |cFFFF5722Defias Pillagers|r and |cFFFF5722Defias Looters|r
-    .complete 13,1
-    .complete 13,2
 step
     .goto Westfall,56.33,47.52
     .target Gryan Stoutmantle
