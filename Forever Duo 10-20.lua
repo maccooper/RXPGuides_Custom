@@ -10,6 +10,12 @@ RXPGuides.RegisterGuide([[
 #next 15-16 Westfall/Redridge
 
 step
+    .goto Darkshore, 36.71, 44.28
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gwennyth Bly'Leggonde|r
+    .accept 3524 >> Accept Washed Ashore
+    .target Gwennyth Bly'Leggonde
+
+step
     .goto Darkshore, 36.8, 44.3
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Laird|r
     .turnin 6342 >> Turn in Flight to Auberdine
@@ -23,7 +29,7 @@ step
     .target Cerellean Whiteclaw
 step
     .goto Darkshore, 37.0, 44.0
-
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Wizbang Cranktoggle|r upstairs
     .accept 983 >> Accept Buzzbox 827
     .target Wizbang Cranktoggle
 
@@ -32,11 +38,7 @@ step
     >>Click the |cFF00FF25Wanted Poster 827|r
     .accept 98025 >> Accept WANTED: Jai'vhanel
 
-step
-    .goto Darkshore, 36.71, 44.28
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gwennyth Bly'Leggonde|r
-    .accept 3524 >> Accept Washed Ashore
-    .target Gwennyth Bly'Leggonde
+
 
 step
     .goto Darkshore,38.80,43.40
@@ -100,7 +102,7 @@ step
     #map Darkshore
     .goto Darkshore, 36.71, 44.98,5,0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gwennyth Bly'Leggonde|r
-    .turnin 4681 >> Turn in Washed Ashore
+    .turnin 4681,2 >> Turn in Washed Ashore
     .target Gwennyth Bly'Leggonde
 
 step
@@ -129,7 +131,14 @@ step
     .accept 4762 >> Accept The Cliffspring River
     .accept 958 >> Accept Tools of the Highborne
     .accept 954 >> Accept Bashal'Aran
+f
+step
+    .goto Darkshore, 37.7, 40.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alanndarian Nightsong|r
+    .accept 2178 >> Accept Easy Strider Living
+    .target Alanndarian Nightsong
 
+step
 
 step
     #map Darkshore
@@ -180,12 +189,19 @@ step
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
 
+
+step
+    .goto Darkshore,47.3,48.7
+    >>Travel up to the |cRXP_PICK_Mysterious Red Crystal|r
+    .complete 4811,1 --Locate the large, red crystal on Darkshore's eastern mountain range
+
 step
     #label Ameth
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Tysha Moonblade|r
     .target Sentinel Tysha Moonblade
     .goto Darkshore,40.30,59.70
     .accept 953 >> Accept The Fall of Ameth'Aran
+
 step
     #completewith TheLay
     >>Kill |cFFFF5722Anaya Dawnrunner|r. Loot her for her |cFF00BCD4Pendant|r
@@ -202,7 +218,7 @@ step
     .mob Wailing Highborne
 step
     #map Darkshore
-    .goto Felwood,25.66,29.01
+    .goto Darkshore, 42.7, 63.1
     >>Click the |cFFDB2EEFThe Fall of Ameth'Aran|r
     .complete 953,2 -- The Fall of Ameth'Aran
 step
@@ -215,11 +231,12 @@ step
     .goto Darkshore,43.3,58.5
     >>Click the |cFFDB2EEFThe Lay of Ameth'Aran|r
     .complete 953,1 -- The Lay of Ameth'Aran
-
 step
     #label Jai'vhanel
-    .goto Darkshore 45.3,58.1
-    >>Kill |cFFFF5722Jai'vhanel|r. Loot her for her |cFF00BCD4Feather of Jai'vhanel|r
+    .goto Darkshore,45.3,58.1
+    >>Kill |cRXP_ENEMY_Jai'vhanel|r. Loot her for the |cRXP_LOOT_Feather of Jai'vhanel|r
+    .complete 98025,1 --Feather of Jai'vhanel (1)
+    .mob Jai'vhanel
 
 step
     #completewith next
@@ -234,8 +251,9 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Sentinel Tysha Moonblade|r
     .turnin 953 >> Turn in The Fall of Ameth'Aran
 step
+    --Den mother will get done when we come back @ 17
     #completewith next
-    >>Kill |cFFFF5722Rabid Thistle Bears|r. Need to finish before turnins
+    >>Kill |cFFFF5722Rabid Thistle Bears|r.
     .complete 2138,1 -- Rabid Thistle Bear slain (20)
     .mob Rabid Thistle Bear
 
@@ -245,6 +263,7 @@ step
     .goto Darkshore,36.02,70.79
     .accept 4728 >> Accept Beached Sea Creature
 step
+    #sticky
     >>Kill |cFFFF5722Rabid Thistle Bears|r. Need to finish before turnins
     .complete 2138,1 -- Rabid Thistle Bear slain (20)
     .mob Rabid Thistle Bear
@@ -271,6 +290,7 @@ step
     .turnin 983 >> Turn in Buzzbox 827
     .accept 1001 >> Accept Buzzbox 411
     .isQuestComplete 983
+
 step
     #map Darkshore
     #label ManyBeached
@@ -304,13 +324,6 @@ step
 
 step
     #map Darkshore
-    .goto Felwood,21.63,18.15
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Tharnariun Treetender|r
-    .turnin 2138 >> Turn in Cleansing of the Infected
-    .accept 2139 >> Accept Tharnariun's Hope
-    .target Tharnariun Treetender
-step
-    #map Darkshore
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Terenthis|r
     .target Terenthis
     .goto Felwood,22.24,18.22
@@ -329,9 +342,19 @@ step
     .target Gorbold Steelhand
     .goto Felwood,20.80,15.58
     .accept 982 >> Accept Deep Ocean, Vast Sea
+
+step
+    #sticky
+    #completewith next
+    .goto Darkshore, x, y
+    >>Kill |cRXP_ENEMY_Darkshore Threshers|r in the water. Loot them for their |cRXP_LOOT_Thresher Eyes|r
+    .complete 1001,1 --Thresher Eye (3)
+    .mob Darkshore Thresher
 step
     #completewith next
     .goto Darkshore,38.95,29.36,30 >> Travel to the wrecked Silver Dawning ship
+
+
 step
     #map Darkshore
     .goto Darkshore,38.95,29.36,10,0
@@ -357,7 +380,7 @@ step
     .accept 4723 >> Accept Beached Sea Creature
 step
     #map Darkshore
-    .goto Felwood,25.19,1.29
+    .goto Darkshore 42.0, 28.7
     >>Click the |cFFDB2EEFBuzzbox 411|r on the ground
     .turnin 1001 >> Turn in Buzzbox 411
     .accept 1002 >> Accept Buzzbox 323
@@ -367,6 +390,7 @@ step
     .goto Darkshore,44.18,20.60
     >>Click the |cFFDB2EEFBeached Sea Turtle|r
     .accept 4725 >> Accept Beached Sea Turtle
+    
 step
     .goto Darkshore,50.81,25.50
     .use 12350 >>|cFFFCDC00Use the|r |T134865:0|t[Empty Sampling Tube] |cFFFCDC00at the Cliffspring River|r
@@ -376,51 +400,13 @@ step
     .goto Winterspring,3.10,20.90
     >>Click the |cFFDB2EEFBeached Sea Turtle|r
     .accept 4727 >> Accept Beached Sea Turtle
-step
-    #map Darkshore
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Balthule Shadowstrike|r
-    .target Balthule Shadowstrike
-    .goto Winterspring,4.82,27.18
-    .turnin 965 >> Turn in The Tower of Althalaxx
-    .accept 966 >> Accept The Tower of Althalaxx
-step
-    .goto Darkshore,55.27,27.74,40,0
-    .goto Darkshore,56.92,27.27,40,0
-    .goto Darkshore,57.54,25.99,40,0
-    .goto Darkshore,56.92,27.27,40,0
-    .goto Darkshore,55.27,27.74
-    >>Kill |cFFFF5722Dark Strand Fanatics|r. Loot them for their |cFF00BCD4Parchment|r
-    .complete 966,1
-    .mob Dark Strand Fanatic
-step
-    #map Darkshore
-    .goto Winterspring,4.82,27.18
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Balthule Shadowstrike|r
-    .turnin 966 >> Turn in The Tower of Althalaxx
-    .accept 967 >> Accept The Tower of Althalaxx
-    .target Balthule Shadowstrike
 
-step
-    .goto Darkshore,55.66,34.89
-    >>Loot the |cFF00BCD4Scaber Stalks|r and |cFF00BCD4Death Cap|r on the ground
-    >>|cFFFCDC00Stay on the upper section. If the|r |cFF00BCD4Death Cap|r |cFFFCDC00is not at the ...|r
-    >>|cFFFCDC00Don't face your back to the center!|r |cFFFF5722Stormscale Wave Riders|r ...
-    .complete 947,1 --Scaber Stalk (5)
-    .complete 947,2 --Death Cap (1)
-step
-    .goto Darkshore,52.60,36.65,45,0
-    .goto Darkshore,51.48,38.26
-    >>Kill |cFFFF5722Den Mother|r
-    >>|cFFFCDC00Be aware of the|r |cFFFF5722Thistle Cubs|r |cFFFCDC00which can stun you for 2 seconds|r
-    .complete 2139,1 --Den Mother (1)
-    .mob Den Mother
-    .mob Thistle Cub
 step
     #map Darkshore
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Asterion|r
     .target Asterion
     .goto Felwood,27.70,10.03
-    .turnin 957 >> Turn in Bashal'Aran
+    .turnin 957,2 >> Turn in Bashal'Aran
 step
     #map Darkshore
     .goto Felwood,31.29,24.14
@@ -428,18 +414,22 @@ step
     .turnin 4812 >> Turn in As Water Cascades
     .accept 4813 >> Accept The Fragments Within
 
+
 step
     #map Darkshore
     .goto Felwood,21.63,18.15
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Tharnariun Treetender|r
-    .turnin 2139 >> Turn in Tharnariun's Hope
+    .turnin 2138 >> Turn in Cleansing of the Infected
+    .accept 2139 >> Accept Tharnariun's Hope
     .target Tharnariun Treetender
+
 step
     #map Darkshore
     .goto Felwood,20.80,15.58
     .target Gorbold Steelhand
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gorbold Steelhand|r
-    .turnin 982 >> Turn in Deep Ocean, Vast Sea
+    .turnin 982,3 >> Turn in Deep Ocean, Vast Sea
+
 step
     #map Darkshore
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Thundris Windweaver|r
@@ -447,6 +437,7 @@ step
     .goto Felwood,19.98,14.40
     .turnin 958 >> Turn in Tools of the Highborne
     .turnin 4762 >> Turn in The Cliffspring River
+    .accept 97914 >> Accept Expanding Horizons
     .isQuestComplete 958
 step
     #map Darkshore
@@ -461,13 +452,6 @@ step
     .goto Felwood,20.34,18.12
     .turnin 4813 >> Turn in The Fragments Within
 
-step
-    #map Darkshore
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Barithras Moonshade|r
-    .target Barithras Moonshade
-    .goto Felwood,19.90,18.40
-    .turnin 947 >> Turn in Cave Mushrooms
-    .accept 948 >> Accept Onu
 step
     #map Darkshore
     #label ManyBeached2
@@ -494,6 +478,7 @@ RXPGuides.RegisterGuide([[
 
 step
     #completewith next
+    -- 3:30 to swim down. Probably faster to fly
     +Take boat from Auberdine to Stormwind, jump off boat when near Westfall
 
 step
@@ -559,24 +544,18 @@ step
     .zoneskip Redridge Mountains
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Foreman Oslow|r
-    .goto Redridge Mountains,32.13,48.63
+    .goto Redridge Mountains,27.2,48.6
     .accept 125 >> Accept The Lost Tools
     .target Foreman Oslow
-    .xp <16
 
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Verner Osgood|r
     .target Verner Osgood
-    .goto Redridge Mountains,30.97,47.27
+    .goto Redridge Mountains,26.0,47.5
     .accept 118 >> Accept The Price of Shoes
+
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Shawn|r
-    .target Shawn
-    .goto Redridge Mountains,29.31,53.63
-    .accept 3741 >> Accept Hilary's Necklace
-step
-    .goto Redridge Mountains,29.31,45.33,15,0
-    .goto Redridge Mountains,29.98,44.45
+    .goto Redridge Mountains,24.9,44.3
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Magistrate Solomon|r
     .target Magistrate Solomon
     .accept 120 >> Accept Messenger to Stormwind
@@ -594,13 +573,89 @@ step
     .turnin 65 >> Turn in The Defias Brotherhood
     .accept 132 >> Accept The Defias Brotherhood
 
--- back to westfall
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Shawn|r
+    .target Shawn
+    .goto Redridge Mountains,29.31,53.63
+    .accept 3741 >> Accept Hilary's Necklace
 
+step
+    .goto Redridge Mountains, 10.3, 71.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Guard Parker|r
+    .turnin 129 >> Turn in A Free Lunch
+    .accept 244 >> Accept Encroaching Gnolls
+    .accept 130 >> Visit the Herbalist
+    .target Guard Parker
+
+step 
+    .goto Redridge Mountains, 25.7, 60.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Feldon|r
+    .turnin 244 >> Turn in Encroaching Gnolls
+    .accept 246 >> Assessing the Threat
+    .accept 98407 >> Show of Force
+    .target Deputy Feldon
+
+step
+    #completewith next
+    .goto Redridge Mountains, 11.4, 60.9
+    >>Kill |cRXP_ENEMY_Redridge Mongrels|r and |cRXP_ENEMY_Redridge Poachers|r
+    .complete 246,1 --Redridge Mongrel (10)
+    .mob +Redridge Mongrel
+    .complete 246,2 --Redridge Poacher (6)
+    .mob +Redridge Poacher
+step
+    .goto Redridge Mountains, 11.4, 60.9
+    >>Kill |cRXP_ENEMY_Redridge Thrashers|r. Loot them for their |cRXP_LOOT_Spiked Collars|r
+    .complete 98407,1 --Spiked Collar (5)
+    .mob Redridge Thrasher
+
+step
+    .goto Redridge Mountains, 25.7, 60.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Feldon|r
+    .turnin 246 >> Turn in Assessing the Threat
+    .turnin 98407 >> Turn in Show of Force
+    .target Deputy Feldon
+
+step
+    .goto 1433/0,-2472.16,-9366.72
+    >>Go underwater and open the |cRXP_PICK_Sunken Chest|r. Loot it for |cRXP_LOOT_Oslow's Toolbox|r
+    .complete 125,1 --Oslow's Toolbox (1)
+
+step
+    .goto 1433/0,-2207.10,-9351.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shawn|r
+    .accept 3741 >> Accept Hilary's Necklace
+    .target Shawn
+step
+    >>Jump into the lake. Open the |cRXP_PICK_Glinting Mud|r and loot it for |cRXP_LOOT_Hilary's Necklace|r
+    >>|cRXP_WARN_It has multiple spawn locations in the lake|r
+    .goto 1433/0,-2174.32,-9386.56,0
+    .goto 1433/0,-2147.41,-9308.08,0
+    .goto 1433/0,-2090.96,-9373.82,0
+    .goto 1433/0,-1986.76,-9324.30,0
+    .goto 1433/0,-2246.40,-9359.92,0
+    .goto 1433/0,-2309.57,-9376.28,0
+    .goto 1433/0,-2397.70,-9363.97,0
+    .complete 3741,1 --Hilary's Necklace (1)
+
+step
+    .goto 1433/0,-2268.32,-9279.12
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Foreman Oslow|r
+    .turnin 125 >> Turn in The Lost Tools
+    .accept 89 >> Accept The Everstill Bridge
+    .target Foreman Oslow
+step
+    .goto 1433/0,-2205.58,-9351.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hilary|r
+    .turnin 3741 >> Turn in Hilary's Necklace
+    .target Hilary
+
+-- back to westfall
 step
     .goto Redridge Mountains,30.40,59.20
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Ariena Stormfeather|r
     .target Ariena Stormfeather
-    .fly Westfall >> Fly to Sentinel Hill
+    .fly Westfall >> Fly to Westfall
     .zoneskip Westfall
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryan|r
@@ -621,12 +676,22 @@ step
     .complete 399,1 --A Simple Compass (1)
     .isOnQuest 399
 step
-    +Gnolls if low on XP (skip this step if don't need XP)
+    #completewith Compass
+    >>Loot |cRXP_ENEMY_Harvest Watchers|r for |cRXP_LOOT_Flasks of Oil|r
+    .collect 814,5,103,1 --Flask of Oil (5)
+    .mob Harvest Watcher
 step
     #completewith next
-    >>Kill |cRXP_ENEMY_Harvest Watchers|r en route
+    >>Kill |cRXP_ENEMY_Harvest Watchers|r en route. Loot them for their |cRXP_LOOT_Flasks of Oil|r
+    >>Try to get to 15/20. If mobs are available, finish here
     .complete 9,1 --Harvest Watcher (20)
     .mob Harvest Watcher
+step
+    #label Compass
+    .goto 1436/0,1748.27,-10672.13
+    >>Open |cRXP_PICK_Alexston's Chest|r. Loot it for |cRXP_LOOT_A Simple Compass|r
+    >>|cRXP_WARN_This has a 5 second cast time|r
+    .complete 399,1 --A Simple Compass (1)
 step
     .goto Westfall,46.1,38.1
     >>Use the Well Water Sample Kit at the well
@@ -752,6 +817,7 @@ step
     .turnin 135 >> Turn in The Defias Brotherhood
     .accept 141 >> Accept The Defias Brotherhood
     .target Master Mathias Shaw
+
 step
     .goto StormwindClassic,66.277,62.137
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
@@ -882,6 +948,12 @@ step
     .turnin 141 >> Turn in The Defias Brotherhood
     .accept 142 >> Accept The Defias Brotherhood
     .target Gryan Stoutmantle
+
+step
+    .goto Westfall, 54.0, 53.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Scout Galliaan|r
+    .accept 153 >> Accept Red Leather Bandanas
+    .target Scout Gallian
 
 step
     >>Talk to |cRXP_FRIENDLY_Danuvin|r
@@ -1295,6 +1367,9 @@ step
     .turnin 98423 >> Turn in The Treaty of Understanding
 step
     .hs >> Hearth to Auberdine
+    -- what if instead this was Darnassus?
+    -- We could get return to Nessa for free + pickup?
+    -- + Erion's Behest? + trouble in Darkshore? + Return to Nessa
 
 ]])
 
@@ -1329,10 +1404,67 @@ step
     .accept 965 >> Accept The Tower of Althalaxx
 
 step
-    #map Darkshore
-    .goto Felwood,31.29,24.14
-    >> Travel to |cFFDB2EEFThe Red Crystal|r
-    .complete 4811,1
+    #sticky
+    >>Kill |cRXP_ENEMY_Moonstalkers|r. Loot them for their |cRXP_LOOT_Moonstalker Fangs|r
+    .complete 1002,1 --Moonstalker Fang (6)
+    .mob Moonstalker
 
+
+step
+    .goto Darkshore,55.27,27.74,40,0
+    .goto Darkshore,56.92,27.27,40,0
+    .goto Darkshore,57.54,25.99,40,0
+    .goto Darkshore,56.92,27.27,40,0
+    .goto Darkshore,55.27,27.74
+    >>Kill |cFFFF5722Dark Strand Fanatics|r. Loot them for their |cFF00BCD4Parchment|r
+    .complete 966,1
+    .mob Dark Strand Fanatic
+
+step
+    #map Darkshore
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Balthule Shadowstrike|r
+    .target Balthule Shadowstrike
+    .goto Winterspring,4.82,27.18
+    .turnin 965 >> Turn in The Tower of Althalaxx
+    .accept 966 >> Accept The Tower of Althalaxx
+    
+step
+    #map Darkshore
+    .goto Winterspring,4.82,27.18
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Balthule Shadowstrike|r
+    .turnin 966 >> Turn in The Tower of Althalaxx
+    .accept 967 >> Accept The Tower of Althalaxx
+    .target Balthule Shadowstrike
+
+step
+    .goto Darkshore,55.66,34.89
+    >>Loot the |cFF00BCD4Scaber Stalks|r and |cFF00BCD4Death Cap|r on the ground
+    >>|cFFFCDC00Stay on the upper section. If the|r |cFF00BCD4Death Cap|r |cFFFCDC00is not at the ...|r
+    >>|cFFFCDC00Don't face your back to the center!|r |cFFFF5722Stormscale Wave Riders|r ...
+    .complete 947,1 --Scaber Stalk (5)
+    .complete 947,2 --Death Cap (1)
+step
+    .goto Darkshore,52.60,36.65,45,0
+    .goto Darkshore,51.48,38.26
+    >>Kill |cFFFF5722Den Mother|r
+    >>|cFFFCDC00Be aware of the|r |cFFFF5722Thistle Cubs|r |cFFFCDC00which can stun you for 2 seconds|r
+    .complete 2139,1 --Den Mother (1)
+    .mob Den Mother
+    .mob Thistle Cub
+
+step
+    #map Darkshore
+    .goto Felwood,21.63,18.15
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Tharnariun Treetender|r
+    .turnin 2139 >> Turn in Tharnariun's Hope
+    .target Tharnariun Treetender
+
+    step
+    #map Darkshore
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Barithras Moonshade|r
+    .target Barithras Moonshade
+    .goto Felwood,19.90,18.40
+    .turnin 947 >> Turn in Cave Mushrooms
+    .accept 948 >> Accept Onu
 ]])
 
