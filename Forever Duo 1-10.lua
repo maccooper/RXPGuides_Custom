@@ -11,7 +11,7 @@ RXPGuides.RegisterGuide([[
 step << !NightElf
     #sticky
     #completewith next
-    +You have selected a guide meant for Nigh1t Elves. You should choose the same starter zone that you start in
+    +You have selected a guide meant for Night Elves. You should choose the same starter zone that you start in
 
 step
     .goto 1438/1,826.03,10328.97
@@ -75,7 +75,7 @@ step << Rogue
     .turnin 456,1 >> Turn in The Balance of Nature
     .target Conservator Ilthalaine
     .accept 457 >> Accept The Balance of Nature
-    .accept 3118 >> Encrypted Sigil
+    .accept 3118 >> Accept Encrypted Sigil
 
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tarindrella|r
@@ -232,7 +232,7 @@ step
     .accept 917 >> Accept Webwood Egg
 step
     .goto 1438/1,912.33,10935.30
-    >>Kill |cRXP_ENEMY_Githyiss the Vile|r loot it for it's |T134298:0|t[|cRXP_LOOT_Fang|r]
+    >>Kill |cRXP_ENEMY_Githyiss the Vile|r loot it for its |T134298:0|t[|cRXP_LOOT_Fang|r]
     >>Loot a |cRXP_LOOT_Webwood Egg|r on the ground at the back of the Cave
     .collect 277190,1 --Fang of Githyiss (x1)
     .complete 917,1 --Collect Webwood Egg (x1)
@@ -334,7 +334,7 @@ step
     .accept 475 >> Accept A Troubling Breeze
 
 step
-    .goto Teldrasil, 55.4,56.8
+    .goto Teldrassil, 55.4,56.8
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Byancie|r
     .train 3273 >> Train |T135966:0|t[First Aid]
     .target Byancie
@@ -449,11 +449,6 @@ step << Rogue
 -- Need to find a solution. Possible alternative route then come back post 6 whenever the pre-req is completed by amphy team?
 
 step
-    #sticky
-    .complete 2518,1 --Collect Silvery Spinnerets (x1)
-    >>|cRXP_WARN_Req: you only need ONE of Lord Melenas or Lady Sathrah|r
-
-step
     #completewith next
     .goto Teldrassil,54.68,52.84,20,0
     .goto Teldrassil,54.42,51.19,15 >> Travel to Fel Rock
@@ -526,7 +521,6 @@ step
 step
     #label Spinnerets
     #loop
-    .isQuestNotComplete MELENAS_QID  -- skip if Melenas branch done
     .goto 1438/1,1828.600,10964.800
     >>Kill |cRXP_ENEMY_Lady Sathrah|r. Loot her for her |cRXP_LOOT_Spinnerets|r
     .complete 2518,1 --Collect Silvery Spinnerets (x1)
@@ -568,7 +562,7 @@ step
 step
     .goto Teldrassil, 56.3, 92.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Nessa Shadowsong|r
-    >>Buy 3x crawlers] and 1x Bauble
+    >>Buy 3x |cRXP_LOOT_Nightcrawlers|r and 1x |cRXP_LOOT_Shiny Bauble|r
     .collect 6530,3 --Nightcrawlers (x3)
     .collect 6529,1 --Shiny Bauble (x1)
     .target Nessa Shadowsong
@@ -582,10 +576,10 @@ step
 
 step
     #completewith next
-    level professions, clean bags while waiting for boat
+    +Level professions, clean bags while waiting for boat
     
-step   
-    .goto 1457/1,X,Y,15,0
+step
+    --TODO: add Auberdine dock coords
     .zone Stormwind City >> Take the boat to Stormwind (end of the dock)
 
 ]])
@@ -598,7 +592,7 @@ RXPGuides.RegisterGuide([[
 #next 12-15 Darkshore
 
 step
-    .goto 1457/1,X,Y
+    --TODO: add Gilbert Gray coords
     >>Talk to |cRXP_FRIENDLY_Gilbert Gray|r
     .accept 95065 >>Accept Fishin' Time
     .turnin 95065,1 >>Turn in Fishin' Time
@@ -628,7 +622,7 @@ step
     .goto Elwynn Forest,42.1,67.3
     >>Talk to |cRXP_FRIENDLY_Remy "Two Times"|r
     .accept 40 >>Accept A Fishy Peril
-    .accept 47 >> Gold Dust Exchange
+    .accept 47 >> Accept Gold Dust Exchange
     .target Remy "Two Times"
 
 step
@@ -666,7 +660,7 @@ step
 step
     .goto Elwynn Forest, 29.9,86.1
     >>Talk to |cRXP_FRIENDLY_Tommy Joe Stonefield|r
-    .turnin 106 >> Turn in Young Lover
+    .turnin 106 >> Turn in Young Lovers
     .accept 111 >> Accept Speak with Gramma
     .target Tommy Joe Stonefield
 
@@ -721,8 +715,8 @@ step
     .turnin 40 >>Turn in A Fishy Peril
     .turnin 62 >>Turn in The Fargodeep Mine
     .target Marshal Dughan
-    .accept 76 >> The Jasperlode Mine
-    .accept 35 >> Further Concerns
+    .accept 76 >> Accept The Jasperlode Mine
+    .accept 35 >> Accept Further Concerns
 
 
 step << Rogue
@@ -833,7 +827,7 @@ step
 
 step
     #completewith next
-    >> Scan for Elmpaw nearby (rare spawn quest)|r
+    >>Scan for Elmpaw nearby (rare spawn quest)
 
 step
     .goto Elwynn Forest,85.6,79.2
@@ -857,8 +851,11 @@ step
     .target Spirit Healer
 
 step
+    .goto Redridge Mountains,30.40,59.20
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ariena Stormfeather|r
-    .fp Lakeridge Highway >> Fly to Stormwind
+    .fp Lakeshire >> Get the Lakeshire flight path
+    .fly Stormwind >> Fly to Stormwind
+    .target Ariena Stormfeather
 
 step
     #completewith next
@@ -876,7 +873,7 @@ step
     .turnin 76 >>Turn in The Jasperlode Mine
     .accept 239 >> Accept Westbrook Garrison Needs Help!
     -- 99% sure no completem
-    .accept 59 >> Cloth and Leather Armor
+    .accept 59 >> Accept Cloth and Leather Armor
     .target Marshal Dughan
 
 step
@@ -931,14 +928,13 @@ step
     .goto Elwynn Forest,24.2,74.5
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Rainer|r
     .turnin 239 >>Turn in Westbrook Garrison Needs Help!
-    .accept 11 >> Riverpaw Gnoll Bounty
+    .accept 11 >> Accept Riverpaw Gnoll Bounty
     .target Deputy Rainer
 
 
 -- Hogger
 
 step
-#sticky
     #completewith next
     .goto Elwynn Forest,24.5,74.6
     .accept 176 >> Accept Wanted: Hogger
@@ -968,9 +964,9 @@ step
     .goto Westfall, 56.3, 30.7
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Salma Saldean|r
     .target Salma Saldean
-    .accept 38 >> Westfall Stetw
+    .accept 38 >> Accept Westfall Stew
     --draft
-    .accept 22 >> Goretusk Liver Pie
+    .accept 22 >> Accept Goretusk Liver Pie
 
 step
     .goto Westfall,56.3,47.5
@@ -1003,7 +999,7 @@ step << Rogue
     .goto StormwindClassic,78.5,70.7
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Mathias Shaw|r in SI:7
     .turnin 2205 >>Turn in Seek out SI: 7
-    .accept 2206 >> Snatch and Grab
+    .accept 2206 >> Accept Snatch and Grab
     .target Master Mathias Shaw
 
 step
@@ -1025,7 +1021,7 @@ step
 step  << Rogue
     .goto Teldrassil, 56.3, 60.2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jannok Breezesong|r
-    .accept 2241 >> The Apple Falls
+    .accept 2241 >> Accept The Apple Falls
 
 step
     #label Melenas
@@ -1049,13 +1045,20 @@ step
     .target Tallonkai Swiftroot
 
 step
-    .goto Darnassus
+    #completewith next
+    .zone Darnassus >> Travel to Darnassus
 
 step
     .goto Teldrassil,70.9,44.8
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mydrannul|r
     .accept 6344 >>Accept Nessa Shadowsong
     .target Mydrannul
+
+step
+    .goto Darnassus,67.4,15.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Saelienne|r
+    .home >> Set your Hearthstone to Darnassus
+    .target Innkeeper Saelienne
 
 step << Rogue
     .goto Darnassus,36.7,21.8
@@ -1074,7 +1077,6 @@ step
 step
     #label Spinnerets
     #loop
-    .isQuestNotComplete MELENAS_QID  -- skip if Melenas branch done
     .goto 1438/1,1828.600,10964.800
     >>Kill |cRXP_ENEMY_Lady Sathrah|r. Loot her for her |cRXP_LOOT_Spinnerets|r
     .complete 2518,1 --Collect Silvery Spinnerets (x1)
