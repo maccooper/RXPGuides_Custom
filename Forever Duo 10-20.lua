@@ -2,6 +2,463 @@ local faction = UnitFactionGroup("player")
 if faction == "Horde" then return end
 
 local L = GetLocale() if L and RXP.enabledLocale[L] then return end
+-- For me I probably do Loch before Thanes so people catchup, do thanes with people immediately go to Darkshore.
+RXPGuides.RegisterGuide([[
+#name 11-12 Loch Modan
+#group Mac Custom
+#subgroup 10-20
+#next 12-15 Darkshore
+
+step
+    .goto Ironforge,55.5,47.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryth Thurden|r
+    .fp Ironforge >>Get the Ironforge flight path
+    .target Gryth Thurden
+
+step
+    .goto Dun Morogh 50.4, 49.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldin Steelgrill|r
+    .accept 96408 >> Accept A Visitor to Dun Morogh
+    .target Beldin Steelgrill
+
+step
+    .goto Dun Morogh 64.8, 58.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Earthseer Farsen|r
+    .turnin 96408 >> Turn in A Visitor to Dun Morogh
+    .accept 96392 >> Accept Farsen's Watch
+    .turnin 96392 >> Talk to Farsen, use his farsight and Turn in
+    .accept 96390 >> Accept Nip 'Em in the Bud
+
+step
+    #completewith next
+    .goto Dun Morogh,76.9,60.3
+    >>Kill |cRXP_ENEMY_Dark Iron Spies|r. Loot them for the |cRXP_LOOT_Dark Iron Map|r
+    .mob Dark Iron Spy
+    .collect 274268,1,96391 --Dark Iron Map (1)
+step
+    >>Click the |cRXP_LOOT_Dark Iron Map|r in your bags
+    .use 274268
+    .accept 96391 >>Accept Underground Map
+step
+    .goto Dun Morogh,64.8,58.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Earthseer Farsen|r
+    .target Earthseer Farsen
+    .turn 96390 >> Turn in Nip 'Em in the Bud
+    .turnin 96391 >>Turn in Underground Map
+    .accept 96393 >>Accept Old Ironforge Incursions
+
+step
+    .goto Dun Morogh, 84.3, 31.2
+    >>Walk east through the tunnel to |cFFfa9602Loch Modan|r
+    .zone Loch Modan >>Travel to Loch Modan
+
+-- Loch Modan
+step
+    .goto Loch Modan, 24.8, 18.3
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    .turnin 353 >> Turn in Stormpike's Delivery
+    .accept 1338 >> Stormpike's Order
+    .accept 307 >> Filthy Paws
+
+
+step
+    .goto Loch Modan 34.9, 49.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vidra Hearthstove|r
+    .accept 418 >> Accept Thelsamar Blood Sausages
+    .target Vidra Hearthstove
+
+step
+    .goto Loch Modan 35.9, 46.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Kadrell|r
+    .accept 416 >> Accept Rat Catching
+    .target Mountaineer Kadrell
+ 
+step
+    #completewith RatEars
+    >>Kill |cRXP_ENEMY_Black Bears|r, |cRXP_ENEMY_Mountain Boars|r and |cRXP_ENEMY_Forest Lurkers|r. Loot them for |cRXP_LOOT_Bear Meat|r, |cRXP_LOOT_Boar Intestines|r and |cRXP_LOOT_Spider Ichor|r
+    .collect 3173,3,418 --Bear Meat (3)
+    .collect 3172,3,418 --Boar Intestines (3)
+    .collect 3174,3,418 --Spider Ichor (3)
+    .mob Black Bear
+    .mob Mountain Boar
+    .mob Forest Lurker
+step
+    #label RatEars
+    .goto Loch Modan,35.5,19.5
+    >>Kill |cRXP_ENEMY_Tunnel Rats|r. Loot them for their |cRXP_LOOT_Tunnel Rat Ears|r
+    .collect 3110,12,416 --Tunnel Rat Ear (12)
+    .mob Tunnel Rat Vermin
+    .mob Tunnel Rat Scout
+    .mob Tunnel Rat Forager
+    .mob Tunnel Rat Geomancer
+
+step
+    .goto Loch Modan,24.8,18.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    .turnin 307 >>Turn in Filthy Paws
+    .target Mountaineer Stormpike
+
+step
+    >>Finish collecting the |cRXP_LOOT_Bear Meat|r, |cRXP_LOOT_Boar Intestines|r and |cRXP_LOOT_Spider Ichor|r
+    .collect 3173,3,418 --Bear Meat (3)
+    .collect 3172,3,418 --Boar Intestines (3)
+    .collect 3174,3,418 --Spider Ichor (3)
+    .mob Black Bear
+    .mob Mountain Boar
+    .mob Forest Lurker
+
+step
+    .goto Loch Modan,22.1,73.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Cobbleflint|r
+    .accept 224 >>Accept In Defense of the King's Lands
+    .target Mountaineer Cobbleflint
+
+step
+    .goto Loch Modan,23.1,73.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Captain Rugelfuss|r
+    .accept 267 >>Accept The Trogg Threat
+    .target Captain Rugelfuss
+
+step
+    .goto Loch Modan,30.6,78.5,0
+    .goto Loch Modan,34.0,80.0,0
+    .goto Loch Modan,27.5,82.0
+    >>Kill |cRXP_ENEMY_Stonesplinter Troggs|r and |cRXP_ENEMY_Stonesplinter Scouts|r. Loot them for their |cRXP_LOOT_Trogg Stone Teeth|r
+    .complete 224,1 --Stonesplinter Trogg (10)
+    .complete 224,2 --Stonesplinter Scout (10)
+    .collect 2536,8,267 --Trogg Stone Tooth (8)
+    .mob Stonesplinter Trogg
+    .mob Stonesplinter Scout
+step
+    .goto Loch Modan,22.1,73.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Cobbleflint|r
+    .turnin 224 >>Turn in In Defense of the King's Lands
+    .target Mountaineer Cobbleflint
+step
+    .goto Loch Modan,23.1,73.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Captain Rugelfuss|r
+    .turnin 267 >>Turn in The Trogg Threat
+    .target Captain Rugelfuss
+
+step
+    .goto Loch Modan,65.9,65.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironband|r
+    .turnin 436 >>Turn in Ironband's Excavation
+    .target Prospector Ironband
+step
+    .goto Loch Modan,65.5,65.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magmar Fellhew|r
+    .accept 297 >>Accept Gathering Idols
+    .target Magmar Fellhew
+
+step
+    #completewith next
+    +Try to kite a few far buzzards to quest accept (have 1 person go and share as ...)
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
+    .accept 257 >> Accept A Hunter's Boast
+    .goto Loch Modan,83.49,65.40
+    .target Daryl the Youngling
+step
+    .goto Loch Modan,81.8,61.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marek Ironheart|r
+    .target Marek Ironheart
+    .accept 86758 >> Accept Twisting the Knife
+step
+    .goto Loch Modan,80.09,64.16,60,0
+    .goto Loch Modan,77.16,75.57,60,0
+    .goto Loch Modan,70.78,72.91,60,0
+    .goto Loch Modan,76.65,62.27,60,0
+    .goto Loch Modan,76.36,56.05,60,0
+    .goto Loch Modan,80.09,64.16,60,0
+    .goto Loch Modan,77.16,75.57,60,0
+    .goto Loch Modan,70.78,72.91,60,0
+    .goto Loch Modan,76.65,62.27,60,0
+    .goto Loch Modan,76.36,56.05,60,0
+    .goto Loch Modan,80.09,64.16
+    >>Kill |cRXP_ENEMY_Mountain Buzzards|r
+    >>|cRXP_WARN_You must complete this quest and return to|r |cRXP_FRIENDLY_Daryl the Youngling|r ...
+    .complete 257,1 -- Mountain Buzzard slain (6)
+    .mob Mountain Buzzard
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
+    .goto Loch Modan,83.49,65.40
+    .turnin 257 >> Turn in A Hunter's Boast
+    .accept 258 >> Accept A Hunter's Challenge
+    .target Daryl the Youngling
+
+step
+    #completewith next
+    >>Kill |cRXP_ENEMY_Daggerfang|r near Bingles
+    .complete 86758,1 -- Daggerfang
+
+step
+    .goto Loch Modan,63.7,47.9
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bingles Blastenheimer|r
+    .target Bingles Blastenheimer
+    .turnin 2038 >> Turn in Find Bingles
+step
+    .goto Loch Modan,62.9,51.2
+    >>Kill |cRXP_ENEMY_Daggerfang|r near Bingles
+    .complete 86758,1 -- Daggerfang
+step
+    .goto Loch Modan,74.65,49.60,70,0
+    .goto Loch Modan,75.80,43.43,70,0
+    .goto Loch Modan,71.10,38.98,70,0
+    .goto Loch Modan,65.59,41.89,70,0
+    .goto Loch Modan,81.66,32.02,70,0
+    .goto Loch Modan,72.79,39.86,70,0
+    .goto Loch Modan,73.82,51.85,70,0
+    .goto Loch Modan,69.45,39.18
+    >>Kill |cRXP_ENEMY_Elder Mountain Boars|r
+    >>|cRXP_WARN_You must complete this quest and return to|r |cRXP_FRIENDLY_Daryl the Youngling|r ...
+    .complete 258,1 -- Elder Mountain Boar slain (5)
+    .mob Elder Mountain Boar
+step
+    #completewith next
+    .goto Loch Modan,82.92,59.37,80,0
+    .goto Loch Modan,83.28,62.07,25 >> Travel toward |cRXP_FRIENDLY_Daryl the Youngling|r
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
+    .goto Loch Modan,83.49,65.40
+    .turnin 258 >> Turn in A Hunter's Challenge
+    .target Daryl the Youngling
+
+step
+    .goto Loch Modan,81.8,61.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marek Ironheart|r
+    .target Marek Ironheart
+    .turnin 86758 >> Turn in Twisting the Knife
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vyrin Swiftwind|r
+    .goto Loch Modan,81.79,64.15
+    .accept 271 >> Accept Vyrin's Revenge
+    .target Vyrin Swiftwind
+step
+    >>Talk to |cRXP_FRIENDLY_Ironband|r and |cRXP_FRIENDLY_Magmar|r
+    .accept 298 >> Accept Excavation Progress Report
+    .goto Loch Modan,65.94,65.62
+    .turnin 436 >> Turn in Ironband's Excavation
+    .goto Loch Modan,63.89,66.66
+    .target Prospector Ironband
+    .target Magmar Fellhew
+step
+    #completewith next
+    .goto Loch Modan,37.6,63
+    >>Kill |cRXP_ENEMY_Ol' Sooty|r if he's patrolling nearby
+    .complete 271,1 -- Ol' Sooty
+    .target Ol' Sooty
+step
+    .goto Loch Modan,37.18,47.13,10,0
+    >>Talk to |cRXP_FRIENDLY_Jern|r
+    >>|cRXP_WARN_He can be inside or outside the building|r
+    .turnin 298 >> Turn in Excavation Progress Report
+    .accept 301 >> Accept Report to Ironforge
+    .goto Loch Modan,37.23,47.37
+    .target Jern Hornhelm
+step
+    .goto Loch Modan,34.6,44.5
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Bluntnose|r
+    .target Magistrate Bluntnose
+    .turnin 255 >> Turn in Mercenaries
+    .turnin 256 >> Turn in Chok'sul
+step
+    .goto Loch Modan,37.6,63
+    >>Kill |cRXP_ENEMY_Ol' Sooty|r
+    .complete 271,1 -- Ol' Sooty
+    .target Ol' Sooty
+
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
+    .goto Loch Modan,83.49,65.40
+    .turnin 271 >> Turn in Vyrin's Revenge
+    .target Daryl the Youngling
+    .isQuestComplete 271
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
+    .goto Loch Modan,83.49,65.40
+    .accept 531 >> Accept Vyrin's Revenge
+    .target Daryl the Youngling
+    .isQuestTurnedIn 271
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vyrin Swiftwind|r
+    .goto Loch Modan,81.73,64.15
+    .turnin 531 >> Turn in Vyrin's Revenge
+    .target Vyrin Swiftwind
+    .isOnQuest 531
+
+
+
+step
+    .hs >>Hearth to Dolanaar
+
+step
+    .goto Teldrassil,56.2,61.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corithras Moonrage|r
+    .turnin 7383 >>Turn in Crown of the Earth
+    .accept 935 >>Accept Crown of the Earth
+    .target Corithras Moonrage
+    
+step  << Rogue
+    .goto Teldrassil, 56.3, 60.2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jannok Breezesong|r
+    .accept 2241 >> Accept The Apple Falls
+
+step
+    #label Melenas
+    .goto Teldrassil,51.2,50.6
+    >>Kill |cRXP_ENEMY_Lord Melenas|r. Loot him for his |cRXP_LOOT_Head|r
+    >>|cRXP_ENEMY_Lord Melenas|r may be located in many different spawn locations throughout Fel Rock
+    .complete 932,1 --Collect Melenas' Head (x1)
+    .unitscan Lord Melenas
+
+
+step
+    .goto Teldrassil,55.6,59.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Kyra Starsong|r
+    .turnin 487 >>Turn in The Road to Darnassus
+    .target Sentinel Kyra Starsong
+
+step
+    .goto Teldrassil,55.5,56.9
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tallonkai Swiftroot|r
+    .turnin 932 >>Turn in Twisted Hatred
+    .target Tallonkai Swiftroot
+
+step
+    #completewith next
+    .zone Darnassus >> Travel to Darnassus
+
+step
+    .goto Teldrassil,70.9,44.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mydrannul|r
+    .accept 6344 >>Accept Nessa Shadowsong
+    .target Mydrannul
+
+step
+    .goto Darnassus,67.4,15.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Saelienne|r
+    .home >> Set your Hearthstone to Darnassus
+    .target Innkeeper Saelienne
+
+step << Rogue
+    .goto Darnassus,36.7,21.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syurna|r
+    .turnin 2241 >> Turn in The Apple Falls
+    .accept 2242 >> Accept Destiny Calls
+    .train 921 >> Train |T133644:0|t[Pick Pocket]
+    .target Syurna
+
+step
+    .goto Darnassus,34.8,9.2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Fandral Staghelm|r
+    .turnin 935,2 >>Turn in Crown of the Earth
+    .target Arch Druid Fandral Staghelm
+    
+step
+    #label Spinnerets
+    #loop
+    .goto 1438/1,1828.600,10964.800
+    >>Kill |cRXP_ENEMY_Lady Sathrah|r. Loot her for her |cRXP_LOOT_Spinnerets|r
+    .complete 2518,1 --Collect Silvery Spinnerets (x1)
+    .mob Lady Sathrah
+
+step << Rogue
+    .goto Teldrassil,37.4,24.4
+    >>|T133644:0|t[Pick Pocket] |cRXP_ENEMY_Sethir the Ancient|r for |cRXP_LOOT_Sethir's Journal|r
+    .complete 2242,1
+    .mob Sethir the Ancient
+
+step
+    .goto Darnassus, 39.5, 89.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Dalia Sunblade|r
+    .turnin 98067 >> Turn in Eyes of the Sentinels
+    .target Sentinel Dalia Sunblade
+step
+    .goto Darnassus, 36.5,86.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess A'moora|r upstairs
+    .turnin 2518 >> Turn in Tears of the Moon
+    .accept 2520 >> Accept Sathrah's Sacrifice
+    .target Priestess A'moora
+
+step
+    .goto Darnassus, 38.7, 86.6
+    .use 8155 >>|cRXP_WARN_Use|r |T135652:0|t[Sathrah's Sacrifice] |cRXP_WARN_at the fountain|r
+    .complete 2520,1 --Offer the sacrifice at the fountain
+step
+    .goto Darnassus, 36.5,86.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess A'moora|r upstairs
+    .turnin 2520,2 >> Turn in Sathrah's Sacrifice
+    .target Priestess A'moora
+
+step << Rogue
+    .goto Darnassus,36.7,21.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syurna|r
+    .turnin 2242 >> Turn in Destiny Calls
+    .target Syurna
+
+step << Rogue
+    .goto Darnassus,36.7,21.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syurna|r
+    .trainer >> Train your class spells
+    .target Syurna
+
+step
+    #completewith next
+    .goto 1457/1,2636.53,9956.80
+    .zone Teldrassil >> Travel through the purple portal to Rut'theran Village
+    .zoneskip Darkshore
+    .subzoneskip 702
+step
+    .goto Teldrassil,70.8, 45.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nessa Shadowsong|r
+    .turnin 6344 >>Turn in Nessa Shadowsong
+    .accept 6341 >>Accept The Bounty of Teldrassil
+    .target Nessa Shadowsong
+
+step << NightElf
+    .goto 1438/1,842.800,8641.300
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus::3838|r
+    .target Vesprystus::3838
+    .turnin 6341 >>Turn in The Bounty of Teldrassil
+    .accept 6342 >>Accept Flight to Auberdine
+step << Druid
+    #completewith next
+    .cast 18960 >> Cast Teleport: Moonglade
+    >>|cRXP_WARN_It will be in your spellbook|r
+    .zoneskip Moonglade
+step << Druid
+    .goto Moonglade,56.21,30.64
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite Starblaze|r up stairs
+    .turnin 5921 >> Turn in Moonglade
+    .target Dendrite Starblaze
+    .accept 5929 >> Accept Great Bear Spirit
+step << Druid
+    .goto Moonglade,45.12,26.78,15,0
+    .goto Moonglade,39.17,27.42
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Great Bear Spirit|r
+    .complete 5929,1 --Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear
+    .skipgossip
+    .target Great Bear Spirit
+step << Druid
+    #completewith next
+    .cast 18960 >> Cast Teleport: Moonglade
+    >>|cRXP_WARN_This will make you return faster|r
+step << Druid
+    .goto Moonglade,56.21,30.64
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite Starblaze|r up stairs
+    .turnin 5929 >> Turn in Great Bear Spirit
+    .target Dendrite Starblaze
+    .accept 5931 >> Accept Back to Darnassus
+
+step << NightElf !Druid
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus::3838|r
+    .target Vesprystus::3838
+    .goto 1438/1,842.800,8641.300
+    .fly Auberdine >>Fly to Auberdine
+
+]])
+
 RXPGuides.RegisterGuide([[
 
 #name 12-15 Darkshore
@@ -669,12 +1126,6 @@ step
 
 
 step
-    #sticky
-    >>Open the |cRXP_PICK_Sacks of Oats|r on the ground. Loot them for |cRXP_LOOT_Handfuls of Oats|r
-    .complete 151, 1 -- Handful of Oats (8)
-
-
-step
     #completewith Compass
     >>Kill |cRXP_ENEMY_Harvest Watchers|r en route
     >>Try to get to 15/20. If mobs are available, finish here
@@ -701,6 +1152,12 @@ step
     >>Kill |cRXP_ENEMY_Harvest Watchers|r en route. Loot them for their |cRXP_LOOT_Okra|r
     .complete 9,1 --Harvest Watcher (20)
     .mob Harvest Watcher
+
+step
+    #sticky
+    >>Open the |cRXP_PICK_Sacks of Oats|r on the ground. Loot them for |cRXP_LOOT_Handfuls of Oats|r
+    .complete 151, 1 -- Handful of Oats (8)
+
 step
     >>Talk to |cRXP_FRIENDLY_Farmer Saldean|r and then |cRXP_FRIENDLY_Salma|r inside the house
     .turnin 9 >> Turn in The Killing Fields
@@ -817,7 +1274,6 @@ step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Osborne the Night Man|r
     .trainer >> Train your class spells
 
-
 step
     .goto StormwindClassic,78.3,70.7
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Master Mathias Shaw|r
@@ -842,6 +1298,7 @@ step
     .goto Westfall,56.33,47.52
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryan|r
     .turnin 141 >> Turn in The Defias Brotherhood
+    .turnin 12 >>Turn in The People's Militia
     .accept 142 >> Accept The Defias Brotherhood
     .target Gryan Stoutmantle
 
@@ -867,11 +1324,11 @@ step << Druid
     .xp>16
 
 step 
-    .goto StormwindClassic,49.193,30.278
+    .goto StormwindClassic,57.6,47.8
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Baros Alexston|r
     .turnin 399 >> Turn in Humble Beginnings
     .turnin 97914 >> Turn in Expanding Horizons
-    --.accept >> Making Do --TODO: quest id
+    .accept 97926 >> Making Do
     .target Baros Alexston
 
 step
@@ -946,7 +1403,7 @@ step
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ghostly Attendant|r
     .target Ghostly Attendant
-    .turnin 96395 >> Turn in An Ancient Grudge --,1 = Stam/AP Cloak ,2 = Str/Agi ...
+    .turnin,1 96395 >> Turn in An Ancient Grudge --,1 = Stam/AP Cloak ,2 = Str/Agi ...
 
 step
     #completewith next
@@ -966,8 +1423,8 @@ step
     .complete 96393,1 -- Durgen's Head
     .unitscan Durgen Dirgehammer
 step
-    >>Interact with the tablet on the ground
-    .accept 98423 >> Accept Treaty of Understanding
+    >>Interact with the tablet on the ground at the end of the dungeon
+    .accept 98423 >> Accept The Treaty of Understanding
 
 step
     #completewith next
@@ -981,7 +1438,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thom Filch|r
     .goto Ironforge,32.2,44.8
     .target Thom Filch
-    .turnin 96403 >> Turn in Important Heirlooms -- ,1 = Tome ,2 = Int/Stam Cloth gl...
+    .turnin 96403 >> Turn in Important Heirlooms,1 -- ,1 = Tome ,2 = Int/Stam Cloth gl...
 step
     .goto Ironforge,36.8,50.5,10,0
     .goto Ironforge,33.6,54.0,10,0
@@ -993,7 +1450,7 @@ step
     .goto Ironforge,33.4,47.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Afadra Dunwall|r
     .target Afadra Dunwall
-    .turnin 96394 >> Turn in The Restless Dead -- ,1 = Leather Belt ,2 = Mail Bracer...
+    .turnin 96394 >> Turn in The Restless Dead,1 -- ,1 = Leather Belt ,2 = Mail Bracer...
 
 step
     .goto Ironforge,42.0,46.8,10,0
@@ -1033,6 +1490,45 @@ RXPGuides.RegisterGuide([[
 #subgroup 10-20
 #next TBD
 
+
+step
+    .goto Darnassus,34.7,25.9
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Erion Shadewhisper|r
+    .accept 2260 >>Accept Erion's Behest
+    .target Erion Shadewhisper
+
+
+step
+    .goto Darnassus, 32.1, 84.5
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chief Archaeologist Greywhisker|r
+    .accept 730 >> Trouble in Darkshore?
+    .target Chief Archaeologist Greywhisker
+
+step
+    #completewith next
+    .goto 1457/1,2636.53,9956.80
+    .zone Teldrassil >> Travel through the purple portal to Rut'theran Village
+    .zoneskip Darkshore
+    .subzoneskip 702
+
+step
+    .goto Teldrassil, 56.3, 92.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Nessa Shadowsong|r
+    .turnin 6343 >> Return to Nessa
+    .target Nessa Shadowsong
+
+step
+    .goto Teldrassil, 58.4, 94.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Vesprystus|r
+    .fly Auberdine >> Fly to Auberdine
+    .target Vesprystus
+
+step
+    .goto Darkshore,36.1,44.9
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gubber Blump|r
+    .accept 1138 >>Accept Fruit of the Sea
+    .target Gubber Blump
+
 step 
     .goto Darkshore, 37.3, 44.2
     >>Click the |cFF00FF25Wanted Poster|r
@@ -1047,6 +1543,7 @@ step
 step
     .goto Darkshore, 36.6, 45.6
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archaeologist Hollee|r
+    .turnin 730 >> Turn in Trouble in Darkshore?
     .accept 729 >> Accept The Absent Minded Prospector
     .target Archaeologist Hollee
 
@@ -1055,7 +1552,28 @@ step
     .goto Felwood,19.98,14.40
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Thundris Windweaver|r
     .accept 4763 >> Accept The Blackwood Corrupted
+    .turnin 97926 >> Turn in Making Do
     .target Thundris Windweaver
+
+step
+    .goto Darkshore,37.8,44.1
+    >>Use the |cRXP_LOOT_Empty Cleansing Bowl|r at the moonwell to fill it
+    .use 12346
+    .collect 12347,1,4763 --Filled Cleansing Bowl (1)
+
+step
+    .goto Darkshore,38.8,43.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharnariun Treetender|r
+    .accept 2139 >>Accept Tharnariun's Hope
+    .target Tharnariun Treetender
+
+step
+    .goto Darkshore, 39.3, 43.5
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Terenthis|r
+    .accept 986 >> Accept A Lost Master
+    .target Terenthis
+
+
 
 step
     .goto Darkshore, 39.0, 43.5
@@ -1128,24 +1646,27 @@ step
     .target Gelkak Gyromast
 
 step
-    #completewith next
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_The Threshwackonator 4100|r to start the escort
-    .target The Threshwackonator 4100
+    .goto Darkshore,51.0,25.4
+    >>Click |cRXP_PICK_Buzzbox 323|r
+    .turnin 1003 >>Turn in Buzzbox 323
+    .accept 525 >> Accept Buzzbox 525
 
 step
-    >>Kill |cRXP_ENEMY_The Threshwackonator 4100|r
-    >>|cRXP_WARN_It's a level 20 elite|r
-    .complete 2078,1 --Gelkak's First Mate (1)
-    .mob The Threshwackonator 4100
-
-step
-    +Delete |cRXP_LOOT_Gyromast's Key|r from your inventory
+    .goto Darkshore,45.0,22.5,0
+    .goto Darkshore,42.5,28.5,0
+    .goto Darkshore,40.5,34.0,0
+    .goto Darkshore,38.5,40.0
+    >>Kill |cRXP_ENEMY_Crabs|r along the shore as you head south towards Auberdine. Loot them for |cRXP_LOOT_Fine Crab Chunks|r
+    .collect 12237,6,1138 --Fine Crab Chunks (6)
+    .mob Young Reef Crawler
+    .mob Reef Crawler
+    .mob Encrusted Tide Crawler
 
 step
     #map Darkshore
     .goto Felwood,19.98,14.40
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Thundris Windweaver|r
-    .turnin 4763 >> Turn in The Blackwood Corrupted
+    .turnin,2 4763 >> Turn in The Blackwood Corrupted
     .target Thundris Windweaver
 
 step
@@ -1213,6 +1734,57 @@ step
     +Delete the |cRXP_LOOT_Phial of Scrying|r from your inventory
 
 step
+    .goto Darkshore 33.0, 81.5
+    >>Click the |cRXP_PICK_Beached Sea Turtle|r and |cRXP_PICK_Beached Sea Creature|r skeleton along the coast
+    .accept 4730 >> accept Beached Sea Creature
+
+step
+    .goto Darkshore 32.1, 83.4
+    >>Click the |cRXP_PICK_Beached Sea Turtle|r and |cRXP_PICK_Beached Sea Creature|r skeleton along the coast
+    .accept 4731 >> accept Beached Sea Creature
+
+
+step
+    .goto Darkshore 32.1, 83.4
+    >>Click the |cRXP_PICK_Beached Sea Turtle|r and |cRXP_PICK_Beached Sea Creature|r skeleton along the coast
+    .accept 4733 >> accept Beached Sea Creature
+
+-- Return to Onu
+-- Finish and turn in buzzbox
+-- Kerlonian Evershade Escort
+-- #TODO Fix next set of handin Coords
+
+step
+    .goto Darkshore,43.6,76.3
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Onu|r
+    .turnin 950 >> Turn in Return to Onu
+    .target Onu
+
+step
+    .goto Darkshore,44.4,76.3
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kerlonian Evershade|r
+    .accept 5321 >>Accept The Sleeper Has Awakened
+    .target Kerlonian Evershade
+
+step
+    .goto Darkshore,41.4,80.6
+    >>Click |cRXP_PICK_Buzzbox 525|r
+    .turnin 1003 >>Turn in Buzzbox 525
+
+step
+    .goto Darkshore,36.1,44.9
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gubber Blump|r
+    .turnin 1138 >>Turn in Fruit of the Sea
+    .target Gubber Blump
+step
+    .goto Darkshore,36.6,45.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwennyth Bly'Leggonde|r
+    .turnin 4730 >>Turn in Beached Sea Creature
+    .turnin 4731 >>Turn in Beached Sea Creature
+    .turnin 4733 >>Turn in Beached Sea Creature
+    .target Gwennyth Bly'Leggonde
+
+step
     #map Darkshore
     .goto Felwood,22.24,18.22
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Terenthis|r
@@ -1234,31 +1806,9 @@ step
     .mob Gravelflint Geomancer
     .target Prospector Remtravel
 
-step
-    --TODO: figure out ALL the sea turtles and if they're possible at 17/18/19
-    +|cRXP_WARN_DEBUG: figure out ALL the sea turtles and if they're possible at 17/18/19|r
+
 
 step
-    .goto Darkshore,43.6,76.3
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Onu|r
-    .turnin 950 >> Turn in Return to Onu
-    .target Onu
-
-step
-    .goto Darkshore,44.4,76.4
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kerlonian Evershade|r
-    .accept 5321 >> Accept The Sleeper Has Awakened
-    .target Kerlonian Evershade
-
-step
-    --TODO: move this earlier in the guide, into the FIRST Darkshore loop (12-15), and pair it with the Baron Marinous quest (98028)
-    .goto Darkshore,43.7,76.4
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arbal|r
-    .accept 98013 >> Accept Swelling Forces
-    .target Arbal
-
-step
-    --TODO: add .turnin lines once the sea turtle list is sorted out (see DEBUG step)
     #map Darkshore
     .goto Felwood,19.10,20.63
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gwennyth Bly'Leggonde|r
@@ -1288,9 +1838,6 @@ step
     .turnin 4763 >> Turn in The Blackwood Corrupted
     .target Thundris Windweaver
 
-
--- 7 hours here would be a good time,
--- Then sleep?
 
 step
     .goto Darkshore,36.3,45.6
@@ -1330,210 +1877,6 @@ step
 ]])
 
 
--- For me I probably do Loch before Thanes so people catchup, do thanes with people immediately go to Darkshore.
-RXPGuides.RegisterGuide([[
-#name 16-18 Loch Modan
-#group Mac Custom
-#subgroup 10-20
-#next 16-18 Hall of Thanes
-
--- Fly in accept mercenaries -> Chok Sul -> Ironbrand's Excavation
--- Stormpike's Delivery -> Thandol Span q's -> Ogres -> Lodge
--- Buzzards -> Bingles + Boars + Turn in -> Go to Excavation
--- Sooty -> Turn in Town -> Excavation (HS Sentinel Hill)
-
--- Test ogres (need to be faster than 8 mins in and out for it to be worth)
-
-step
-    .goto Loch Modan,34.6,44.5
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Bluntnose|r
-    .target Magistrate Bluntnose
-    .accept 255 >> Accept Mercenaries
-step
-    .goto Loch Modan,37.3,46.5
-    >>Click the |cRXP_PICK_Wanted Poster|r
-    .accept 256 >> Accept WANTED: Chok'sul
-step
-    .goto Loch Modan,37.2,47.4
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jern Hornhelm|r
-    .target Jern Hornhelm
-    .accept 436 >> Accept Ironband's Excavation
-
-step
-    .goto Loch Modan,24.764,18.397
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Mountaineer Stormpike|r
-    .turnin 353 >> Turn in Stormpike's Delivery
-    .target Mountaineer Stormpike
-step
-    .goto 1432/0,-3263.96,-4737.87
-    .target Chief Engineer Hinderweir VII
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chief Engineer Hinderweir VII|r
-    .accept 250 >> Accept A Dark Threat Looms
-step
-    .goto 1432/0,-3539.60,-4731.06
-    >>Click the |cRXP_PICK_Suspicious Barrel|r
-    .turnin 250 >> Turn in A Dark Threat Looms
-    .accept 199 >> Accept A Dark Threat Looms
-step
-    .goto 1432/0,-3263.96,-4737.87
-    .target Chief Engineer Hinderweir VII
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chief Engineer Hinderweir VII|r
-    .turnin 199 >> Turn in A Dark Threat Looms
-step
-    #completewith next
-    >>Kill Ogres en route to Chok'sul, try to focus Brutes (Only found in caves)
-    .complete 255,1 -- Ogres
-    .complete 255,2 -- Brutes
-    .complete 255,3 -- Enforcers
-step
-    >>Kill |cRXP_ENEMY_Chok'sul|r in the back of the cave
-    .goto Loch Modan,79.7,14.7
-    .complete 256,1 -- Chok'sul's Head
-
-step
-    >>Kill |cRXP_ENEMY_Ogres|r, try to finish towards lodge
-    .complete 255,1 -- Ogres
-    .complete 255,2 -- Brutes
-    .complete 255,3 -- Enforcers
-step
-    #completewith next
-    +Try to kite a few far buzzards to quest accept (have 1 person go and share as ...)
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
-    .accept 257 >> Accept A Hunter's Boast
-    .goto Loch Modan,83.49,65.40
-    .target Daryl the Youngling
-step
-    .goto Loch Modan,81.8,61.7
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marek Ironheart|r
-    .target Marek Ironheart
-    .accept 86758 >> Accept Twisting the Knife
-step
-    .goto Loch Modan,80.09,64.16,60,0
-    .goto Loch Modan,77.16,75.57,60,0
-    .goto Loch Modan,70.78,72.91,60,0
-    .goto Loch Modan,76.65,62.27,60,0
-    .goto Loch Modan,76.36,56.05,60,0
-    .goto Loch Modan,80.09,64.16,60,0
-    .goto Loch Modan,77.16,75.57,60,0
-    .goto Loch Modan,70.78,72.91,60,0
-    .goto Loch Modan,76.65,62.27,60,0
-    .goto Loch Modan,76.36,56.05,60,0
-    .goto Loch Modan,80.09,64.16
-    >>Kill |cRXP_ENEMY_Mountain Buzzards|r
-    >>|cRXP_WARN_You must complete this quest and return to|r |cRXP_FRIENDLY_Daryl the Youngling|r ...
-    .complete 257,1 -- Mountain Buzzard slain (6)
-    .mob Mountain Buzzard
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
-    .goto Loch Modan,83.49,65.40
-    .turnin 257 >> Turn in A Hunter's Boast
-    .accept 258 >> Accept A Hunter's Challenge
-    .target Daryl the Youngling
-
-step
-    #completewith next
-    >>Kill |cRXP_ENEMY_Daggerfang|r near Bingles
-    .complete 86758,1 -- Daggerfang
-
-step
-    .goto Loch Modan,63.7,47.9
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bingles Blastenheimer|r
-    .target Bingles Blastenheimer
-    .turnin 2038 >> Turn in Find Bingles
-step
-    .goto Loch Modan,62.9,51.2
-    >>Kill |cRXP_ENEMY_Daggerfang|r near Bingles
-    .complete 86758,1 -- Daggerfang
-step
-    .goto Loch Modan,74.65,49.60,70,0
-    .goto Loch Modan,75.80,43.43,70,0
-    .goto Loch Modan,71.10,38.98,70,0
-    .goto Loch Modan,65.59,41.89,70,0
-    .goto Loch Modan,81.66,32.02,70,0
-    .goto Loch Modan,72.79,39.86,70,0
-    .goto Loch Modan,73.82,51.85,70,0
-    .goto Loch Modan,69.45,39.18
-    >>Kill |cRXP_ENEMY_Elder Mountain Boars|r
-    >>|cRXP_WARN_You must complete this quest and return to|r |cRXP_FRIENDLY_Daryl the Youngling|r ...
-    .complete 258,1 -- Elder Mountain Boar slain (5)
-    .mob Elder Mountain Boar
-step
-    #completewith next
-    .goto Loch Modan,82.92,59.37,80,0
-    .goto Loch Modan,83.28,62.07,25 >> Travel toward |cRXP_FRIENDLY_Daryl the Youngling|r
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
-    .goto Loch Modan,83.49,65.40
-    .turnin 258 >> Turn in A Hunter's Challenge
-    .target Daryl the Youngling
-
-step
-    .goto Loch Modan,81.8,61.7
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marek Ironheart|r
-    .target Marek Ironheart
-    .turnin 86758 >> Turn in Twisting the Knife
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vyrin Swiftwind|r
-    .goto Loch Modan,81.79,64.15
-    .accept 271 >> Accept Vyrin's Revenge
-    .target Vyrin Swiftwind
-step
-    >>Talk to |cRXP_FRIENDLY_Ironband|r and |cRXP_FRIENDLY_Magmar|r
-    .accept 298 >> Accept Excavation Progress Report
-    .goto Loch Modan,65.94,65.62
-    .turnin 436 >> Turn in Ironband's Excavation
-    .goto Loch Modan,63.89,66.66
-    .target Prospector Ironband
-    .target Magmar Fellhew
-step
-    #completewith next
-    .goto Loch Modan,37.6,63
-    >>Kill |cRXP_ENEMY_Ol' Sooty|r if he's patrolling nearby
-    .complete 271,1 -- Ol' Sooty
-    .target Ol' Sooty
-step
-    .goto Loch Modan,37.18,47.13,10,0
-    >>Talk to |cRXP_FRIENDLY_Jern|r
-    >>|cRXP_WARN_He can be inside or outside the building|r
-    .turnin 298 >> Turn in Excavation Progress Report
-    .accept 301 >> Accept Report to Ironforge
-    .goto Loch Modan,37.23,47.37
-    .target Jern Hornhelm
-step
-    .goto Loch Modan,34.6,44.5
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Bluntnose|r
-    .target Magistrate Bluntnose
-    .turnin 255 >> Turn in Mercenaries
-    .turnin 256 >> Turn in Chok'sul
-step
-    .goto Loch Modan,37.6,63
-    >>Kill |cRXP_ENEMY_Ol' Sooty|r
-    .complete 271,1 -- Ol' Sooty
-    .target Ol' Sooty
-
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
-    .goto Loch Modan,83.49,65.40
-    .turnin 271 >> Turn in Vyrin's Revenge
-    .target Daryl the Youngling
-    .isQuestComplete 271
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daryl the Youngling|r
-    .goto Loch Modan,83.49,65.40
-    .accept 531 >> Accept Vyrin's Revenge
-    .target Daryl the Youngling
-    .isQuestTurnedIn 271
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vyrin Swiftwind|r
-    .goto Loch Modan,81.73,64.15
-    .turnin 531 >> Turn in Vyrin's Revenge
-    .target Vyrin Swiftwind
-    .isOnQuest 531
-
-
-]])
-
 
 RXPGuides.RegisterGuide([[
 #name Inbox
@@ -1541,6 +1884,8 @@ RXPGuides.RegisterGuide([[
 #subgroup 10-20
 
 --- end of Defias
+
+
 
     
 step

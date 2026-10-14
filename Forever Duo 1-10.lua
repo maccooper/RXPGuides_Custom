@@ -53,9 +53,6 @@ step << Rogue
     .collect 277114 >> Buy a Skinning Satchel
     .target Frahun Shadewhisper
     .train 1784 >>Train Stealth
-
-
-
 step << Warrior
     .goto 1438/1,794.92,10436.72
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keina|r
@@ -532,15 +529,6 @@ step
     .target Spirit Healer
 
 step
-    #completewith next
-    .zoneskip Darnassus,1
-    >>Buy |T134059:0|t[Mild Spices] from a cooking vendor, then use the macro below to craft a |T132834:0|t[Herb Baked Egg]
-    .collect 2678,10 --Mild Spices (10)
-    .collect 6888,1 --Herb Baked Egg (1)
-    .itemcount 6889,1 --Small Egg
-    .macro Herb Baked Egg,132834 >>/cast Cooking\n/run C_TradeSkillUI.CraftRecipe(8604,1)
-
-step
     .goto 1457/1,2009.100,9986.601
     .goto 1457/1,2240.100,10121.000
     .goto 1457/1,2579.300,10129.000
@@ -575,9 +563,22 @@ step
     .target Vesprystus
 
 step
+    --TODO: find the best spot to buy Mild Spices (Auberdine general goods? somewhere earlier on the route?) and add vendor + coords
+    >>Buy |T134059:0|t[Mild Spices] from a vendor before the boat
+    .collect 2678,10 --Mild Spices (10)
+    .itemcount 6889,1 --Small Egg
+
+step
     #completewith next
     +Level professions, clean bags while waiting for boat
-    
+
+step
+    #completewith next
+    >>Cook a |T132834:0|t[Herb Baked Egg] on the boat with the macro below
+    .collect 6888,1 --Herb Baked Egg (1)
+    .itemcount 6889,1 --Small Egg
+    .macro Herb Baked Egg,132834 >>/cast Cooking\n/run C_TradeSkillUI.CraftRecipe(8604,1)
+
 step
     --TODO: add Auberdine dock coords
     .zone Stormwind City >> Take the boat to Stormwind (end of the dock)
@@ -589,7 +590,7 @@ RXPGuides.RegisterGuide([[
 #name 7-11 Westfall
 #group Mac Custom
 #subgroup 01-11
-#next 12-15 Darkshore
+#next 11-12 Loch Modan
 
 step
     --TODO: add Gilbert Gray coords
@@ -1009,173 +1010,15 @@ step
     .target Baros Alexston
 
 step
-    .hs >>Hearth to Dolanaar
+    .goto StormwindClassic,51.8,12.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grimand Elmore|r in the Dwarven District
+    .turnin 1097 >> Turn in Elmore's Task
+    .accept 353 >> Accept Stormpike's Delivery
+    .target Grimand Elmore
 
 step
-    .goto Teldrassil,56.2,61.6
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corithras Moonrage|r
-    .turnin 7383 >>Turn in Crown of the Earth
-    .accept 935 >>Accept Crown of the Earth
-    .target Corithras Moonrage
-    
-step  << Rogue
-    .goto Teldrassil, 56.3, 60.2
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jannok Breezesong|r
-    .accept 2241 >> Accept The Apple Falls
-
-step
-    #label Melenas
-    .goto Teldrassil,51.2,50.6
-    >>Kill |cRXP_ENEMY_Lord Melenas|r. Loot him for his |cRXP_LOOT_Head|r
-    >>|cRXP_ENEMY_Lord Melenas|r may be located in many different spawn locations throughout Fel Rock
-    .complete 932,1 --Collect Melenas' Head (x1)
-    .unitscan Lord Melenas
-
-
-step
-    .goto Teldrassil,55.6,59.8
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Kyra Starsong|r
-    .turnin 487 >>Turn in The Road to Darnassus
-    .target Sentinel Kyra Starsong
-
-step
-    .goto Teldrassil,55.5,56.9
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tallonkai Swiftroot|r
-    .turnin 932 >>Turn in Twisted Hatred
-    .target Tallonkai Swiftroot
-
-step
-    #completewith next
-    .zone Darnassus >> Travel to Darnassus
-
-step
-    .goto Teldrassil,70.9,44.8
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mydrannul|r
-    .accept 6344 >>Accept Nessa Shadowsong
-    .target Mydrannul
-
-step
-    .goto Darnassus,67.4,15.6
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Saelienne|r
-    .home >> Set your Hearthstone to Darnassus
-    .target Innkeeper Saelienne
-
-step << Rogue
-    .goto Darnassus,36.7,21.8
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syurna|r
-    .turnin 2241 >> Turn in The Apple Falls
-    .accept 2242 >> Accept Destiny Calls
-    .train 921 >> Train |T133644:0|t[Pick Pocket]
-    .target Syurna
-
-step
-    .goto Darnassus,34.8,9.2
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Fandral Staghelm|r
-    .turnin 935,2 >>Turn in Crown of the Earth
-    .target Arch Druid Fandral Staghelm
-    
-step
-    #label Spinnerets
-    #loop
-    .goto 1438/1,1828.600,10964.800
-    >>Kill |cRXP_ENEMY_Lady Sathrah|r. Loot her for her |cRXP_LOOT_Spinnerets|r
-    .complete 2518,1 --Collect Silvery Spinnerets (x1)
-    .mob Lady Sathrah
-
-step << Rogue
-    .goto Teldrassil,37.4,24.4
-    >>|T133644:0|t[Pick Pocket] |cRXP_ENEMY_Sethir the Ancient|r for |cRXP_LOOT_Sethir's Journal|r
-    .complete 2242,1
-    .mob Sethir the Ancient
-
-step
-    .goto Darnassus, 39.5, 89.0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Dalia Sunblade|r
-    .turnin 98067 >> Turn in Eyes of the Sentinels
-    .target Sentinel Dalia Sunblade
-step
-    .goto Darnassus, 36.5,86.1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess A'moora|r upstairs
-    .turnin 2518 >> Turn in Tears of the Moon
-    .accept 2520 >> Accept Sathrah's Sacrifice
-    .target Priestess A'moora
-
-step
-    .goto Darnassus, 38.7, 86.6
-    .use 8155 >>|cRXP_WARN_Use|r |T135652:0|t[Sathrah's Sacrifice] |cRXP_WARN_at the fountain|r
-    .complete 2520,1 --Offer the sacrifice at the fountain
-step
-    .goto Darnassus, 36.5,86.1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess A'moora|r upstairs
-    .turnin 2520,2 >> Turn in Sathrah's Sacrifice
-    .target Priestess A'moora
-
-step << Rogue
-    .goto Darnassus,36.7,21.8
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syurna|r
-    .turnin 2242 >> Turn in Destiny Calls
-    .target Syurna
-
-step << Rogue
-    .goto Darnassus,36.7,21.8
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syurna|r
-    .trainer >> Train your class spells
-    .target Syurna
-
-step
-    #completewith next
-    .goto 1457/1,2636.53,9956.80
-    .zone Teldrassil >> Travel through the purple portal to Rut'theran Village
-    .zoneskip Darkshore
-    .subzoneskip 702
-step
-    .goto Teldrassil,70.8, 45.0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nessa Shadowsong|r
-    .turnin 6344 >>Turn in Nessa Shadowsong
-    .accept 6341 >>Accept The Bounty of Teldrassil
-    .target Nessa Shadowsong
-
-step << NightElf
-    .goto 1438/1,842.800,8641.300
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus::3838|r
-    .target Vesprystus::3838
-    .turnin 6341 >>Turn in The Bounty of Teldrassil
-    .accept 6342 >>Accept Flight to Auberdine
-step << Druid
-    #completewith next
-    .cast 18960 >> Cast Teleport: Moonglade
-    >>|cRXP_WARN_It will be in your spellbook|r
-    .zoneskip Moonglade
-step << Druid
-    .goto Moonglade,56.21,30.64
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite Starblaze|r up stairs
-    .turnin 5921 >> Turn in Moonglade
-    .target Dendrite Starblaze
-    .accept 5929 >> Accept Great Bear Spirit
-step << Druid
-    .goto Moonglade,45.12,26.78,15,0
-    .goto Moonglade,39.17,27.42
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Great Bear Spirit|r
-    .complete 5929,1 --Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear
-    .skipgossip
-    .target Great Bear Spirit
-step << Druid
-    #completewith next
-    .cast 18960 >> Cast Teleport: Moonglade
-    >>|cRXP_WARN_This will make you return faster|r
-step << Druid
-    .goto Moonglade,56.21,30.64
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite Starblaze|r up stairs
-    .turnin 5929 >> Turn in Great Bear Spirit
-    .target Dendrite Starblaze
-    .accept 5931 >> Accept Back to Darnassus
-
-step << NightElf !Druid
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus::3838|r
-    .target Vesprystus::3838
-    .goto 1438/1,842.800,8641.300
-    .fly Auberdine >>Fly to Auberdine
+    .goto StormwindClassic,63.9,8.2
+    .zone Ironforge >> Enter the Deeprun Tram. Take the train to Ironforge
+    .zoneskip Ironforge
 
 ]])
-
-
