@@ -475,6 +475,10 @@ RXPGuides.RegisterGuide([[
 
 step
     #completewith next
+    +Level professions, clean bags while waiting for boat
+
+step
+    #completewith next
     -- 3:30 to swim down. Probably faster to fly
     +Take boat from Auberdine to Stormwind, jump off boat when near Westfall
 
