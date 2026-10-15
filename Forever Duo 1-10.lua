@@ -6,7 +6,7 @@ RXPGuides.RegisterGuide([[
 #name 1-7 Shadowglen
 #group Mac Custom
 #subgroup 01-11
-#next 7-11 Westfall
+#next 7-11 Elwynn
 
 step << !NightElf
     #sticky
@@ -587,7 +587,7 @@ step
 
 
 RXPGuides.RegisterGuide([[
-#name 7-11 Westfall
+#name 7-11 Elwynn
 #group Mac Custom
 #subgroup 01-11
 #next 11-12 Loch Modan

@@ -1344,7 +1344,7 @@ RXPGuides.RegisterGuide([[
 #name 16-18 Hall of Thanes
 #group Mac Custom
 #subgroup 10-20
-#next 17-20 Darkshore
+#next 18-20 Darkshore
 
 step
     #completewith next
@@ -1471,9 +1471,7 @@ step
     .target Innkeeper Firebrew
     .zoneskip Darkshore
     .zoneskip Darnassus
-    -- Darn or Auberdine?
-    -- We could get return to Nessa for free + pickup?
-    -- + Erion's Behest? + trouble in Darkshore? + Return to Nessa
+
 
 step
     .goto Teldrassil, 58.4, 94.0
@@ -1485,7 +1483,7 @@ step
 
 RXPGuides.RegisterGuide([[
 
-#name 17-20 Darkshore
+#name 18-20 Darkshore
 #group Mac Custom
 #subgroup 10-20
 #next TBD
@@ -1734,6 +1732,22 @@ step
     +Delete the |cRXP_LOOT_Phial of Scrying|r from your inventory
 
 step
+    .goto Darkshore,35.7,83.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r
+    .turnin 729 >> Turn in The Absent Minded Prospector
+    .accept 731 >> Accept The Absent Minded Prospector
+    .target Prospector Remtravel
+
+step
+    >>When the |cRXP_ENEMY_Gravelflint Bonesnapper|r and |cRXP_ENEMY_Gravelflint Geomancer|r spawn, let the |cRXP_ENEMY_Geomancer|r cast |T135812:0|t[Fireball] on |cRXP_FRIENDLY_Remtravel|r, then cast |T136071:0|t[Polymorph] on it
+    >>Kill the |cRXP_ENEMY_Bonesnapper|r, then the |cRXP_ENEMY_Geomancer|r
+    .complete 731,1 --Escort Prospector Remtravel
+    .mob Gravelflint Bonesnapper
+    .mob Gravelflint Geomancer
+    .target Prospector Remtravel
+
+
+step
     .goto Darkshore 33.0, 81.5
     >>Click the |cRXP_PICK_Beached Sea Turtle|r and |cRXP_PICK_Beached Sea Creature|r skeleton along the coast
     .accept 4730 >> accept Beached Sea Creature
@@ -1755,6 +1769,26 @@ step
 -- #TODO Fix next set of handin Coords
 
 step
+    .goto Darkshore,41.4,80.6
+    >>Click |cRXP_PICK_Buzzbox 525|r
+    .turnin 1003 >>Turn in Buzzbox 525
+
+
+step
+    .goto Darkshore,45.6,90.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Aynasha|r
+    .accept 5713 >> Accept One Shot. One Kill.
+    .target Sentinel Aynasha
+
+step
+    .goto Darkshore,45.6,90.4
+    >>Defend |cRXP_FRIENDLY_Sentinel Aynasha|r from the furbolg waves. Tag mobs first so she doesn't steal the XP
+    >>|cRXP_ENEMY_Marosh the Devious|r spawns in the final wave
+    .complete 5713,1 --Protect Aynasha
+    .mob Marosh the Devious
+    .target Sentinel Aynasha
+
+step
     .goto Darkshore,43.6,76.3
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Onu|r
     .turnin 950 >> Turn in Return to Onu
@@ -1767,9 +1801,48 @@ step
     .target Kerlonian Evershade
 
 step
-    .goto Darkshore,41.4,80.6
-    >>Click |cRXP_PICK_Buzzbox 525|r
-    .turnin 1003 >>Turn in Buzzbox 525
+    #title Escort Kerlonian
+    .goto Ashenvale,27.3,35.6
+    >>Escort |cRXP_FRIENDLY_Kerlonian Evershade|r south to Maestra's Post. When he falls asleep, use the |T133867:0|t[Horn of Awakening] to wake him
+    .complete 5321,1 --Escort Kerlonian Evershade
+    .use 13536
+    .target Kerlonian Evershade
+
+step
+    #completewith next
+    .goto Ashenvale,26.6,38.6,40 >> Run south into Ashenvale to Maestra's Post
+
+step
+    .goto Ashenvale,26.6,38.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Onaeya|r
+    .turnin 5713 >> Turn in One Shot. One Kill.
+    .target Sentinel Onaeya
+
+step
+    .goto Ashenvale,27.2,35.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Liladris Moonriver|r
+    .turnin 5321 >> Turn in The Sleeper Has Awakened
+    .target Liladris Moonriver
+
+step
+    .goto Ashenvale,27.2,38.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
+    .turnin 967 >> Turn in The Tower of Althalaxx
+    .accept 970 >> Accept The Tower of Athalaxx
+    .target Delgren the Purifier
+
+step
+    .goto Ashenvale 23.7, 52.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
+    .turin 945 >> Turn in Therylune's Escape
+    .target Therysil
+
+step
+    .goto Ashenvale,34.4,48.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Daelyshia|r
+    .fly Auberdine >> Fly to Auberdine
+    .target Daelyshia
+    .zoneskip Darkshore
 
 step
     .goto Darkshore,36.1,44.9
@@ -1790,23 +1863,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Terenthis|r
     .turnin 98042 >> Turn in It's All Fun and Games Until...
     .target Terenthis
-
-step
-    .goto Darkshore,35.7,83.7
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r
-    .turnin 729 >> Turn in The Absent Minded Prospector
-    .accept 731 >> Accept The Absent Minded Prospector
-    .target Prospector Remtravel
-
-step
-    >>When the |cRXP_ENEMY_Gravelflint Bonesnapper|r and |cRXP_ENEMY_Gravelflint Geomancer|r spawn, let the |cRXP_ENEMY_Geomancer|r cast |T135812:0|t[Fireball] on |cRXP_FRIENDLY_Remtravel|r, then cast |T136071:0|t[Polymorph] on it
-    >>Kill the |cRXP_ENEMY_Bonesnapper|r, then the |cRXP_ENEMY_Geomancer|r
-    .complete 731,1 --Escort Prospector Remtravel
-    .mob Gravelflint Bonesnapper
-    .mob Gravelflint Geomancer
-    .target Prospector Remtravel
-
-
 
 step
     #map Darkshore
@@ -1847,19 +1903,14 @@ step
     .zoneskip Teldrassil
 
 step
-    .goto Teldrassil,56.3,92.4
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nessa Shadowsong|r
-    .turnin 6343 >> Turn in Return to Nessa
-    .target Nessa Shadowsong
-
-step
     #completewith next
     .zone Darnassus >> Take the purple portal to Darnassus
 
 step
-    --TODO: Greywhisker coords
+    .goto Darnassus, 31.3, 84.2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chief Archaeologist Greywhisker|r
     .turnin 741 >> Turn in The Absent Minded Prospector
+    .accept 942 >> The Absent Minded Prospector
     .target Chief Archaeologist Greywhisker
 
 step

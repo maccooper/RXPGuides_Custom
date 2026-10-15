@@ -10,7 +10,45 @@ RXPGuides.RegisterGuide([[
 -- Technically it doesnt' need to be Ironforge it could be anywhere we batch hearthed from, but most likely we should do Hall of thanes then insta leave the continent to Darkshore
 --
 -- Redridge Part 2
+step
+    .goto Ironforge,51.4,5.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gerrig Bonegrip|r
+    .accept 971 >> Accept Knowledge in the Deeps
+    .target Gerrig Bonegrip
+    
+step
+    .goto Ironforge,55.5,47.7
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryth Thurden|r
+    .fly Stormwind >> Fly to Stormwind
+    .target Gryth Thurden
+    .zoneskip Stormwind City
 
+step >> Rogue
+    .goto StormwindClassic,78.5,70.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Mathias Shaw|r
+    .target Master Mathias Shaw
+    .accept 2360 >> Mathias and the Defias
+
+step >> Rogue
+    .goto StormwindClassic,78.5,70.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Renzik "The Shiv"|r
+    .target Renzik "The Shiv"
+    .turnin 2260 >> Turn in Erion's Behest
+    .accept 2281>> Redridge Rendezvous
+
+step << Rogue
+    .goto StormwindClassic,77.4,65.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Osborne the Night Man|r
+    .trainer >> Train your class spells
+    .target Osborne the Night Man
+
+step
+    .goto StormwindClassic,66.3,62.1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
+    .fly Redridge >> Fly to Redridge Mountains
+    .target Dungar Longdrink
+    .zoneskip Redridge Mountains
+    
 step
     .goto Ironforge,55.5,47.7
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryth Thurden|r

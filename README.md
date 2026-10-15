@@ -6,8 +6,10 @@ Night Elf leveling route for WoW Forever, built on [RXPGuides](https://github.co
 
 | Levels | Zone(s) |
 |---|---|
-| 1-10 | Shadowglen / Teldrassil, Elwynn, Westfall |
-| 10-15 | Darkshore |
+| 1-7 | Shadowglen / Teldrassil, Elwynn, Westfall |
+| 7-11 | Elwynn |
+| 11-12| Loch Modan|
+| 12-15 | Darkshore |
 | 15-16 | Westfall / Redridge |
 | 16-18 | Hall of Thanes |
 | 18-20 | Darkshore |
